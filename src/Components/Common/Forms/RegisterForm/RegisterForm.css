@@ -1,0 +1,174 @@
+/* LoginForm.css - Estilos para el formulario de registro */
+
+/* ------------------------- */
+/* Estilos Base del Contenedor */
+/* ------------------------- */
+.container.my-5 {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ------------------------- */
+/* Estilos del Título */
+/* ------------------------- */
+h3.text-center {
+    color: #2D3748; /* Gris oscuro */
+    font-weight: 700;
+    margin-bottom: 2rem !important;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ------------------------- */
+/* Estilos del Formulario */
+/* ------------------------- */
+form.p-5.border.rounded.shadow {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ------------------------- */
+/* Estilos de las Etiquetas */
+/* ------------------------- */
+label.form-label {
+    color: #2D3748;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* ------------------------- */
+/* Estilos de los Inputs */
+/* ------------------------- */
+input.form-control {
+    border: 1px solid #CBD5E0 !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #F8F9FA;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+input.form-control:focus {
+    border-color: #20A4F3 !important; /* Azul eléctrico */
+    box-shadow: 0 0 0 3px rgba(32, 164, 243, 0.2) !important;
+    background-color: #FFFFFF;
+}
+
+/* ------------------------- */
+/* Estilos del Botón */
+/* ------------------------- */
+button.btn.btn-outline-secondary {
+    background-color: #20A4F3 !important; /* Azul eléctrico */
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 0.8rem !important;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem !important;
+}
+
+button.btn.btn-outline-secondary:hover {
+    background-color: #1a8fd8 !important; /* Azul más oscuro */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(32, 164, 243, 0.3);
+}
+
+button.btn.btn-outline-secondary:active {
+    transform: translateY(0);
+}
+
+/* ------------------------- */
+/* Estilos del Spinner */
+/* ------------------------- */
+.d-flex.justify-content-center {
+    margin: 1.5rem 0;
+}
+
+.spinner-border {
+    color: #20A4F3 !important; /* Azul eléctrico */
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: 0.2em;
+}
+
+.d-flex.justify-content-center span {
+    color: #4A5568;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+/* ------------------------- */
+/* Mensajes de Respuesta */
+/* ------------------------- */
+p.respuestaServer {
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+p.respuestaServer.error {
+    background-color: #FFF5F5;
+    color: #E53E3E;
+    border: 1px solid #FC8181;
+}
+
+p.respuestaServer.success {
+    background-color: #F0FFF4;
+    color: #2F855A;
+    border: 1px solid #68D391;
+}
+
+/* ------------------------- */
+/* Diseño Responsive */
+/* ------------------------- */
+@media (max-width: 768px) {
+    .container.my-5 {
+        padding: 1rem;
+    }
+    
+    form.p-5.border.rounded.shadow {
+        padding: 2rem !important;
+    }
+    
+    h3.text-center {
+        font-size: 1.5rem;
+    }
+}
+
+/* ------------------------- */
+/* Efectos de Transición */
+/* ------------------------- */
+.row.mt-3 {
+    transition: all 0.3s ease;
+}
+
+/* ------------------------- */
+/* Estilos para los grupos de inputs */
+/* ------------------------- */
+.col-12.col-md-6 {
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .col-12.col-md-6 {
+        margin-bottom: 0;
+    }
+}
