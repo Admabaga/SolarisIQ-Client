@@ -1,5 +1,13 @@
-body {
-  display: flex;
-  background-color: #eff5fa  !important;
+html, body, #root {
+  background-color: #b5bcca;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+/* Aquí debe estar el flex */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

@@ -1,6 +1,7 @@
 import RegisterForm from "../../Common/Forms/RegisterForm/RegisterForm"
 import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged.jsx"
 import RegisterAbout from "../../Common/About/RegisterAbout.jsx"
+import Footer from "../../Common/Footer/Footer.jsx"
 export default function Register() {
     return (
         <>
@@ -15,6 +16,7 @@ export default function Register() {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </>
     )
 }
