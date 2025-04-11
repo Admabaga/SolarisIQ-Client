@@ -1,50 +1,51 @@
 import { useState } from "react";
-import axios from 'axios'
+import axios from 'axios';
 import './RegisterForm.css';
 import { EnvelopeFill, PersonFill, TelephoneFill, LockFill } from 'react-bootstrap-icons';
+import ValidationRegisterCode from "../../ValidationRegisterCode/ValidationRegisterCode";
 
 export default function RegisterForm() {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [search, setSearch] = useState(false)
-    const [rol, setRol] = useState("USER")
-    const [respuestaServer, setRespuestaServer] = useState("")
-    const [respuestaServerError, setRespuestaServerError] = useState(false)
+    const [search, setSearch] = useState(false);
+    const [rol] = useState("USER");
+    const [respuestaServer, setRespuestaServer] = useState("");
+    const [respuestaServerError, setRespuestaServerError] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     async function procesarFormulario(evento) {
-        evento.preventDefault()
-        setSearch(true)
+        evento.preventDefault();
+        setSearch(true);
         try {
-            const response = await axios.post('http://localhost:8080/users',
-                {
-                    name,
-                    phone,
-                    email,
-                    rol,
-                    password,
-                })
-            setRespuestaServer("Valida tu registro!")
-            setRespuestaServerError(false)
-            console.log(response.data)
+            const response = await axios.post('http://localhost:8080/users', {
+                name,
+                phone,
+                email,
+                rol,
+                password,
+            });
+            setRespuestaServer("¡Valida tu registro!");
+            setRespuestaServerError(false);
+            console.log(response.data);
+            setShowModal(true);
         } catch (error) {
-            const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado"
+            const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado";
             setRespuestaServer(`Error al enviar datos: ${mensajeError}`);
-            setRespuestaServerError(true)
-
+            setRespuestaServerError(true);
         } finally {
-            setSearch(false)
+            setSearch(false);
         }
-
     }
+
     return (
         <>
             <div className="container my-5">
                 <div className="row">
                     <div className="col-12">
-                        <h3 className="text-center mb-4">Registrate !</h3>
-                        <form action="" className="p-5 border rounded shadow" onSubmit={procesarFormulario}>
+                        <h3 className="text-center mb-4">¡Regístrate!</h3>
+                        <form className="p-5 border rounded shadow" onSubmit={procesarFormulario}>
                             <div className="mb-3">
                                 <label className="form-label">Nombre:</label>
                                 <div className="input-group">
@@ -55,13 +56,13 @@ export default function RegisterForm() {
                                         type="text"
                                         className="form-control"
                                         value={name}
-                                        onChange={(name) => setName(name.target.value)}
+                                        onChange={(e) => setName(e.target.value)}
                                         required
                                     />
                                 </div>
                             </div>
                             <div className="mb-3">
-                                <label className="form-label">Telefono:</label>
+                                <label className="form-label">Teléfono:</label>
                                 <div className="input-group">
                                     <span className="input-group-text">
                                         <TelephoneFill />
@@ -70,7 +71,7 @@ export default function RegisterForm() {
                                         type="number"
                                         className="form-control"
                                         value={phone}
-                                        onChange={(telefono) => setPhone(telefono.target.value)}
+                                        onChange={(e) => setPhone(e.target.value)}
                                         required
                                     />
                                 </div>
@@ -85,7 +86,7 @@ export default function RegisterForm() {
                                         type="email"
                                         className="form-control"
                                         value={email}
-                                        onChange={(correo) => setEmail(correo.target.value)}
+                                        onChange={(e) => setEmail(e.target.value)}
                                         required
                                     />
                                 </div>
@@ -100,7 +101,7 @@ export default function RegisterForm() {
                                         type="password"
                                         className="form-control"
                                         value={password}
-                                        onChange={(password) => setPassword(password.target.value)}
+                                        onChange={(e) => setPassword(e.target.value)}
                                         required
                                     />
                                 </div>
@@ -111,24 +112,30 @@ export default function RegisterForm() {
                             >
                                 Registrarse
                             </button>
+
                             {search ? (
                                 <div className="d-flex justify-content-center">
-                                    <div className="spinner-border" ></div>
+                                    <div className="spinner-border" role="status"></div>
                                     <span className="m-1">Enviando...</span>
                                 </div>
-
-                            ) : (<>
-                                {respuestaServer && (
-                                    <p className={`respuestaServer ${respuestaServerError ? 'error' : 'success'}`}>
-                                        {respuestaServer}
-                                    </p>
-                                )}
-                            </>
+                            ) : (
+                                <>
+                                    {respuestaServer && (
+                                        <p className={`respuestaServer ${respuestaServerError ? 'error' : 'success'}`}>
+                                            {respuestaServer}
+                                        </p>
+                                    )}
+                                </>
                             )}
                         </form>
                     </div>
                 </div>
             </div>
+
+            <ValidationRegisterCode
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}>
+            </ValidationRegisterCode>
         </>
     );
 }
