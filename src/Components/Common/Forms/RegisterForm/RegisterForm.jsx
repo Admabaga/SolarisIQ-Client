@@ -62,21 +62,6 @@ export default function RegisterForm() {
                                 </div>
                             </div>
                             <div className="mb-3">
-                                <label className="form-label">Teléfono:</label>
-                                <div className="input-group">
-                                    <span className="input-group-text">
-                                        <TelephoneFill />
-                                    </span>
-                                    <input
-                                        type="number"
-                                        className="form-control"
-                                        value={phone}
-                                        onChange={(e) => setPhone(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                            </div>
-                            <div className="mb-3">
                                 <label className="form-label">Correo:</label>
                                 <div className="input-group">
                                     <span className="input-group-text">
@@ -87,6 +72,21 @@ export default function RegisterForm() {
                                         className="form-control"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label">Teléfono:</label>
+                                <div className="input-group">
+                                    <span className="input-group-text">
+                                        <TelephoneFill />
+                                    </span>
+                                    <input
+                                        type="number"
+                                        className="form-control"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
                                         required
                                     />
                                 </div>

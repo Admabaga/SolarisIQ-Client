@@ -9,6 +9,7 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 import { AppRoutes } from './Routes/Routes.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
