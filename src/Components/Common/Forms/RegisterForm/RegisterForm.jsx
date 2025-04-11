@@ -14,7 +14,13 @@ export default function RegisterForm() {
     const [respuestaServer, setRespuestaServer] = useState("");
     const [respuestaServerError, setRespuestaServerError] = useState(false);
     const [showModal, setShowModal] = useState(false);
-
+    let user = {
+        name,
+        phone,
+        email,
+        rol,
+        password
+    }
     async function procesarFormulario(evento) {
         evento.preventDefault();
         setSearch(true);
@@ -28,7 +34,7 @@ export default function RegisterForm() {
             });
             setRespuestaServer("¡Valida tu registro!");
             setRespuestaServerError(false);
-            console.log(response.data);
+            user = response.data
             setShowModal(true);
         } catch (error) {
             const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado";
@@ -131,10 +137,10 @@ export default function RegisterForm() {
                     </div>
                 </div>
             </div>
-
             <ValidationRegisterCode
                 isOpen={showModal}
-                onClose={() => setShowModal(false)}>
+                onClose={() => setShowModal(false)}
+                userData={user}>
             </ValidationRegisterCode>
         </>
     );

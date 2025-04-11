@@ -25,7 +25,7 @@ h3.text-center {
 /* Estilos del Formulario */
 /* ------------------------- */
 form.p-5.border.rounded.shadow {
-    background-color: #FFFFFF;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border: 1px solid #E2E8F0 !important;
     border-radius: 12px !important;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
