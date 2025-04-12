@@ -41,7 +41,7 @@ export function NavBarNotLogged(){
                       </Link>
                   </li>
                   <li className="nav-item">
-                      <Link className="nav-link" to={'/metodoPagos'}>
+                      <Link className="nav-link" to={'/aboutUs'}>
                           Nuestra App
                       </Link>
                   </li>

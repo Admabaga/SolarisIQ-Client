@@ -1,11 +1,11 @@
 html, body, #root {
-  background-color: #b5bcca;
   height: 100%;
   margin: 0;
   padding: 0;
+  background: linear-gradient(to right, #b5bcca, #d1d8e6); /* Degradado desde tu color base a un tono claro */
+  font-family: 'Inter', 'Poppins', sans-serif;
 }
 
-/* Aquí debe estar el flex */
 #root {
   display: flex;
   flex-direction: column;
