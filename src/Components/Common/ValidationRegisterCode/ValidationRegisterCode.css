@@ -3,13 +3,13 @@
   height: 50px;
   font-size: 24px;
   border-radius: 8px;
-  border: 2px solid #ccc;
+  border: 2px solid #0c0c0c;
   transition: border-color 0.3s, box-shadow 0.3s;
   outline: none;
 }
 
 .code-input:focus {
-  border-color: #4A90E2;
+  border-color: #2865aa;
   box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
 }
 
@@ -48,10 +48,14 @@
 }
 
 .modal-content {
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  max-width: 450px;
+  position: relative;
+  z-index: 1050 !important; 
+  background-color: rgb(14, 13, 13) !important; 
+  backdrop-filter: none !important; 
+  -webkit-backdrop-filter: none !important;
+  border-radius: 10% !important;
 }
+
 
 .modal-dialog {
   max-width: 500px;
@@ -60,4 +64,25 @@
 .text-danger {
   margin-top: 10px;
   font-size: 14px;
+}
+
+.modal-wrapper {
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: -70px;
+  right: -60px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 1060;
+}
+
+.close-button:hover {
+  color: white;
 }

@@ -1,7 +1,10 @@
 import { useState } from "react"
 import axios from 'axios'
 import { EnvelopeFill, LockFill, Eye, EyeSlash } from 'react-bootstrap-icons'
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './LoginForm.css'
+
 export default function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -9,7 +12,7 @@ export default function LoginForm() {
     const [showPassword, setShowPassword] = useState(false)
     const [respuestaServer, setRespuestaServer] = useState("")
     const [respuestaServerError, setRespuestaServerError] = useState(false)
-
+    const navigate = useNavigate()
     async function procesarFormulario(evento) {
         evento.preventDefault()
         setSearch(true)
@@ -19,9 +22,9 @@ export default function LoginForm() {
                     email,
                     password,
                 })
-            setRespuestaServer("Valida tu registro!")
             setRespuestaServerError(false)
-            console.log(response.data)
+            toast.success('Sesión iniciada!');
+            navigate("/lobby")
         } catch (error) {
             const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado"
             setRespuestaServer(`Error al enviar datos: ${mensajeError}`);

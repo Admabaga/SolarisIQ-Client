@@ -1,0 +1,139 @@
+.navbar-vertical-container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.navbar-vertical {
+  width: 250px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #203748 !important;
+  padding: 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-contentLogged {
+  margin-left: 250px;
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .navbar-vertical-container {
+    min-height: auto;
+    flex-direction: column;
+  }
+  
+  .navbar-vertical {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 0.5rem 1rem;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between; 
+    bottom: auto;
+  }
+  
+  .navbar-vertical > * {
+    margin: 0 0.5rem; 
+    white-space: nowrap; 
+  }
+  
+  .main-contentLogged {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.submenu {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.submenu .nav-link {
+  padding: 0.5rem 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  border-left: 2px solid transparent;
+}
+
+.submenu .nav-link:hover,
+.submenu .nav-link.active {
+  color: white;
+  border-left: 2px solid #0d6efd;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+/* Estilos para el botón de logout */
+.logout-item {
+  margin-top: auto; /* Lo posiciona al final */
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+}
+
+.logout-btn:hover {
+  color: white !important;
+  background-color: rgba(255, 0, 0, 0.1) !important;
+}
+
+.logout-btn i {
+  font-size: 1.1rem;
+}
+
+/* Logo container */
+.logo-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+}
+
+.logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilo para el botón de cerrar sesión */
+.nav-item.mt-auto .nav-link:hover {
+  color: white !important;
+  background-color: rgba(255, 0, 0, 0.1) !important;
+}
+
+/*pantallas pequeñas*/
+@media (max-width: 480px) {
+  .navbar-vertical {
+    overflow-x: auto; 
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+  }
+  
+  .navbar-vertical > * {
+    margin: 0 0.3rem;
+    font-size: 0.9rem; 
+  }
+}
