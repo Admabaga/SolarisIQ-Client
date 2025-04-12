@@ -2,9 +2,8 @@ import { useState } from "react";
 import axios from 'axios';
 import './RegisterForm.css';
 import { EnvelopeFill, PersonFill, TelephoneFill, LockFill } from 'react-bootstrap-icons';
-import ValidationRegisterCode from "../../ValidationRegisterCode/ValidationRegisterCode";
 
-export default function RegisterForm() {
+export default function RegisterForm({ onRegisterSuccess }) {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
@@ -13,14 +12,7 @@ export default function RegisterForm() {
     const [rol] = useState("USER");
     const [respuestaServer, setRespuestaServer] = useState("");
     const [respuestaServerError, setRespuestaServerError] = useState(false);
-    const [showModal, setShowModal] = useState(false);
-    let user = {
-        name,
-        phone,
-        email,
-        rol,
-        password
-    }
+
     async function procesarFormulario(evento) {
         evento.preventDefault();
         setSearch(true);
@@ -34,8 +26,8 @@ export default function RegisterForm() {
             });
             setRespuestaServer("¡Valida tu registro!");
             setRespuestaServerError(false);
-            user = response.data;
-            setShowModal(true);
+            const user = response.data;
+            onRegisterSuccess(user);
         } catch (error) {
             const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado";
             setRespuestaServer(`Error al enviar datos: ${mensajeError}`);
@@ -137,12 +129,6 @@ export default function RegisterForm() {
                     </div>
                 </div>
             </div>
-            <ValidationRegisterCode
-                isOpen={showModal}
-                onClose={() => setShowModal(false)}
-                userData={user}
-            >
-            </ValidationRegisterCode>
         </>
     );
 }
