@@ -1,0 +1,130 @@
+/* VARIABLES GLOBALES */
+:root {
+    --color-primary: #20A4F3;
+    --color-primary-dark: #1a8fd8;
+    --color-secondary: #07C8A0;
+    --color-text: #2D3748;
+    --color-text-light: #4A5568;
+    --color-white: #FFFFFF;
+    --color-bg-light: #F8F9FA;
+    --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ESTRUCTURA PRINCIPAL */
+.register-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.register-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.register-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* SECCIÓN INFORMATIVA */
+.register-info-section {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 16px;
+    padding: 3rem;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-info-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 1;
+}
+
+/* SECCIÓN DEL FORMULARIO */
+.register-form-section {
+    display: flex;
+    align-items: center;
+}
+
+.form-wrapper {
+    width: 100%;
+    background: var(--color-white);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.form-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+/* EFECTOS HOVER */
+@media (hover: hover) {
+    .register-info-section:hover {
+        transform: translateX(5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .form-wrapper:hover {
+        transform: translateX(-5px);
+    }
+}
+
+/* DISEÑO RESPONSIVE */
+@media (max-width: 992px) {
+    .register-grid-container {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+    }
+
+    .register-info-section {
+        margin-bottom: 2rem;
+    }
+
+    .register-info-section,
+    .form-wrapper {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .register-grid-container {
+        padding: 0 1rem;
+    }
+
+    .register-info-section,
+    .form-wrapper {
+        padding: 1.5rem;
+    }
+}

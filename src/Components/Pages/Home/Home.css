@@ -19,3 +19,71 @@
     z-index: -1;
     opacity: 0.5;
 }
+
+  .banner h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  }
+  
+  .banner p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  
+/* Estilo del contenedor principal */
+.login-section {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  
+  .login-side-info {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    flex: 1;
+  }
+  
+
+  /* Media query para pantallas extra pequeñas */
+  @media (max-width: 480px) {
+    .login-section {
+      gap: 1rem;
+    }
+    
+    .login-side-info {
+      padding: 1.5rem;
+    }
+    
+    .login-section form {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .main-content {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  
+    .banner {
+      flex: 2;
+    }
+  
+    .login-form-wrapper {
+      flex: 1;
+      margin: 0;
+    }
+  }
+  

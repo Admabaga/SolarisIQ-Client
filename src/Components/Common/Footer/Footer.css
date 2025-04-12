@@ -1,85 +1,84 @@
 .footer {
-    background-color: #203748;
-    color: #ffffff;
-    position: relative; 
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-  }
-  
+  background-color: #203748;
+  color: #ffffff;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.col-lg-4 {
+  flex: 0 0 30%;
+  max-width: 30%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.col-lg-4 h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.col-lg-4 ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.col-lg-4 ul li {
+  margin-bottom: 10px;
+}
+
+.col-lg-4 p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+.col-lg-4 a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.col-lg-4 a:hover {
+  color: #4dabf7;
+}
+
+.col-lg-4 img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.6s;
+}
+
+.col-lg-4 img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
   .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
-  
+
   .col-lg-4 {
-    flex: 0 0 30%;
-    max-width: 30%;
-    text-align: left;
-    margin-bottom: 20px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
   }
-  
-  .col-lg-4 h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #fff;
-  }
-  
-  .col-lg-4 ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .col-lg-4 ul li {
-    margin-bottom: 10px;
-  }
-  
-  .col-lg-4 p {
-    line-height: 1.6;
-    margin-bottom: 15px;
-    color: #ccc;
-  }
-  
-  .col-lg-4 a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .col-lg-4 a:hover {
-    color: #4dabf7;
-  }
-  
-  .col-lg-4 img {
-    width: 50px;
-    height: 50px;
-    transition: transform 0.6s;
-  }
-  
-  .col-lg-4 img:hover {
-    transform: scale(1.1);
-  }
-  
-  @media (max-width: 768px) {
-    .row {
-      flex-direction: column;
-    }
-  
-    .col-lg-4 {
-      flex: 0 0 100%;
-      max-width: 100%;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-  }
-  
+}

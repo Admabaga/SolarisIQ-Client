@@ -1,22 +1,26 @@
-import RegisterForm from "../../Common/Forms/RegisterForm/RegisterForm"
-import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged.jsx"
-import RegisterAbout from "../../Common/About/RegisterAbout.jsx"
-import Footer from "../../Common/Footer/Footer.jsx"
+import RegisterForm from "../../Common/Forms/RegisterForm/RegisterForm";
+import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged.jsx";
+import RegisterAbout from "../../Common/About/RegisterAbout.jsx";
+import Footer from "../../Common/Footer/Footer.jsx";
+import "./Register.css";
+
 export default function Register() {
     return (
-        <>
-            <NavBarNotLogged></NavBarNotLogged>
-            <div className="mt-5 mb-5 p-4 justify-content-center" style={{ width: '100%' }}>
-                <div className="row ">
-                    <div className="col-md-6">
-                        <RegisterAbout></RegisterAbout>
+        <div className="register-page">
+            <NavBarNotLogged />
+            <main className="register-main">
+                <div className="register-grid-container">
+                    <div className="register-info-section">
+                        <RegisterAbout />
                     </div>
-                    <div className="col-md-6">
-                        <RegisterForm></RegisterForm>
+                    <div className="register-form-section">
+                        <div className="form-wrapper">
+                            <RegisterForm />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <Footer></Footer>
-        </>
-    )
+            </main>
+            <Footer />
+        </div>
+    );
 }

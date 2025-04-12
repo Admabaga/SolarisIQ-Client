@@ -1,3 +1,4 @@
+/* Manteniendo tus estilos originales */
 .code-input {
   width: 40px;
   height: 50px;
@@ -49,16 +50,16 @@
 
 .modal-content {
   position: relative;
-  z-index: 1050 !important; 
-  background-color: rgb(14, 13, 13) !important; 
-  backdrop-filter: none !important; 
+  z-index: 1050;
+  background-color: rgb(14, 13, 13) !important;
+  backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  border-radius: 10% !important;
+  border-radius: 10px !important;
 }
-
 
 .modal-dialog {
   max-width: 500px;
+  margin: 0 auto;
 }
 
 .text-danger {
@@ -72,7 +73,7 @@
 
 .close-button {
   position: absolute;
-  top: -70px;
+  top: -60px;
   right: -60px;
   background: transparent;
   border: none;
@@ -85,4 +86,17 @@
 
 .close-button:hover {
   color: white;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

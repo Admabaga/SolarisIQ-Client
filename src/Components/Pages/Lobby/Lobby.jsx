@@ -4,13 +4,13 @@ import RegisterForm from "../../Common/Forms/RegisterForm/RegisterForm";
 import './Lobby.css'
 
 export default function Lobby() {
-  return (
-    <div className="layout-container">
-      <div className="main-wrapper">
-        <NavBarLogged />
+    return (
+        <div className="layout-container">
+            <div className="main-wrapper">
+                <NavBarLogged />
 
-        <Footer />
-      </div>
-    </div>
-  );
+                <Footer />
+            </div>
+        </div>
+    );
 }

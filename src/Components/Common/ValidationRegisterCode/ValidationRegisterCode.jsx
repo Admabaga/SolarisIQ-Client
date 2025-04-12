@@ -99,10 +99,25 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
     };
 
     if (!isOpen) return null;
-
     return (
-        <div className="modal-backdrop show d-flex align-items-center justify-content-center" style={{ zIndex: 1050 }}>
-            <div className="modal-wrapper position-relative">
+        <div className="modal-backdrop show" style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            zIndex: 1050,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        }}>
+            <div className="modal-wrapper" style={{
+                position: 'relative',
+                maxWidth: '500px',
+                width: '100%',
+                margin: '0 20px'
+            }}>
                 <button
                     className="close-button"
                     onClick={onClose}
@@ -110,7 +125,6 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
                 >
                     &times;
                 </button>
-    
                 <div className="modal-dialog">
                     <div className="modal-content p-4 text-center">
                         {children}
@@ -131,9 +145,7 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
                                     />
                                 ))}
                             </div>
-    
                             {error && <div className="text-danger">{error}</div>}
-    
                             <div className="d-flex justify-content-center">
                                 <button
                                     className="btn btn-outline-secondary mx-2"
@@ -143,7 +155,6 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
                                     {isLoading ? 'Validando...' : 'Validar'}
                                 </button>
                             </div>
-    
                             <div className="d-flex justify-content-center mt-3 flex-column align-items-center">
                                 <button
                                     className="btn btn-primary mb-2"
@@ -166,7 +177,6 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
             </div>
         </div>
     );
-    
 };
 
 export default ValidationRegisterCode;

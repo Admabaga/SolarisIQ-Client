@@ -34,7 +34,7 @@ export default function RegisterForm() {
             });
             setRespuestaServer("¡Valida tu registro!");
             setRespuestaServerError(false);
-            user = response.data
+            user = response.data;
             setShowModal(true);
         } catch (error) {
             const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado";
@@ -140,7 +140,8 @@ export default function RegisterForm() {
             <ValidationRegisterCode
                 isOpen={showModal}
                 onClose={() => setShowModal(false)}
-                userData={user}>
+                userData={user}
+            >
             </ValidationRegisterCode>
         </>
     );

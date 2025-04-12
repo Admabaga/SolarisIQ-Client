@@ -1,4 +1,3 @@
-/* Elimina el .main-contentAboutUs y reemplázalo con: */
 .content-section {
   padding: 40px 0;
 }
@@ -9,9 +8,9 @@
   background-color: rgba(255, 255, 255, 0.9);
   padding: 25px;
   border-radius: 12px;
-  box-shadow: 
-      0 4px 16px rgba(0, 0, 0, 0.03),
-      inset 0 0 0 1px rgba(0, 0, 0, 0.03);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.03),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.03);
   margin-bottom: 30px;
   transition: all 0.3s ease;
   white-space: pre-line;
@@ -19,9 +18,9 @@
 
 .content-section p:hover {
   transform: translateY(-3px);
-  box-shadow: 
-      0 8px 24px rgba(0, 0, 0, 0.08),
-      inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .keyword {
@@ -60,12 +59,12 @@
   backdrop-filter: blur(5px);
 }
 
-/* Timeline */
 .timeline {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
 }
+
 .timeline::after {
   content: '';
   position: absolute;
@@ -76,12 +75,14 @@
   left: 50%;
   margin-left: -2px;
 }
+
 .timeline-item {
   padding: 10px 40px;
   position: relative;
   width: 50%;
   box-sizing: border-box;
 }
+
 .timeline-item::after {
   content: '';
   position: absolute;
@@ -92,85 +93,112 @@
   top: 20px;
   z-index: 1;
 }
-.left { 
+
+.left {
   left: 0;
   text-align: right;
 }
-.right { 
+
+.right {
   left: 50%;
 }
-.left::after { 
-  right: -12px; 
+
+.left::after {
+  right: -12px;
 }
-.right::after { 
-  left: -8px; 
+
+.right::after {
+  left: -8px;
 }
+
 .timeline-content {
   background: white;
   border-radius: 12px;
 }
 
-/* Equipo */
 .team-card {
   transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 12px !important;
   overflow: hidden;
 }
+
 .team-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Video */
-.video-container {
-  margin: 60px 0;
-}
-
-/* CTA */
 .cta-about {
   background: linear-gradient(135deg, #1a3e72 0%, #4a8fe7 100%);
   padding: 60px 0;
 }
 
-/* Animaciones */
 @keyframes fadeInUp {
   from {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
+
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-section, .timeline-section, .team-section {
+section,
+.timeline-section,
+.team-section {
   animation: fadeInUp 0.6s ease forwards;
   opacity: 0;
 }
 
-section:nth-of-type(1) { animation-delay: 0.1s; }
-section:nth-of-type(2) { animation-delay: 0.3s; }
-.timeline-section { animation-delay: 0.4s; }
-.team-section { animation-delay: 0.5s; }
+section:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
 
-/* Responsive */
+section:nth-of-type(2) {
+  animation-delay: 0.3s;
+}
+
+.timeline-section {
+  animation-delay: 0.4s;
+}
+
+.team-section {
+  animation-delay: 0.5s;
+}
+
 @media (max-width: 768px) {
-  .timeline::after { left: 31px; }
-  .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-  .left, .right { left: 0; text-align: left; }
-  .left::after, .right::after { left: 21px; }
-  
+  .timeline::after {
+    left: 31px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+  .left,
+  .right {
+    left: 0;
+    text-align: left;
+  }
+
+  .left::after,
+  .right::after {
+    left: 21px;
+  }
+
   .content-section {
-      padding: 20px 0;
+    padding: 20px 0;
   }
-  
+
   .content-section p {
-      font-size: 16px;
-      padding: 15px;
+    font-size: 16px;
+    padding: 15px;
   }
-  
+
   .stats-section .col-md-3 {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 }

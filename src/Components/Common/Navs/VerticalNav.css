@@ -29,23 +29,23 @@
     min-height: auto;
     flex-direction: column;
   }
-  
+
   .navbar-vertical {
     width: 100%;
     height: auto;
     position: relative;
     padding: 0.5rem 1rem;
-    flex-direction: row; 
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     bottom: auto;
   }
-  
-  .navbar-vertical > * {
-    margin: 0 0.5rem; 
-    white-space: nowrap; 
+
+  .navbar-vertical>* {
+    margin: 0 0.5rem;
+    white-space: nowrap;
   }
-  
+
   .main-contentLogged {
     margin-left: 0;
     padding: 1rem;
@@ -76,9 +76,9 @@
   border-left: 2px solid #0d6efd;
   background-color: rgba(255, 255, 255, 0.05);
 }
-/* Estilos para el botón de logout */
+
 .logout-item {
-  margin-top: auto; /* Lo posiciona al final */
+  margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -103,7 +103,6 @@
   font-size: 1.1rem;
 }
 
-/* Logo container */
 .logo-container {
   width: 80px;
   height: 80px;
@@ -118,22 +117,20 @@
   object-fit: cover;
 }
 
-/* Estilo para el botón de cerrar sesión */
 .nav-item.mt-auto .nav-link:hover {
   color: white !important;
   background-color: rgba(255, 0, 0, 0.1) !important;
 }
 
-/*pantallas pequeñas*/
 @media (max-width: 480px) {
   .navbar-vertical {
-    overflow-x: auto; 
+    overflow-x: auto;
     flex-wrap: nowrap;
     padding: 0.5rem;
   }
-  
-  .navbar-vertical > * {
+
+  .navbar-vertical>* {
     margin: 0 0.3rem;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
 }

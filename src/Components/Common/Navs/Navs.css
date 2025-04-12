@@ -1,10 +1,5 @@
-/* Navs.css - Estilos para la barra de navegación de Solaris IQ */
-
-/* ------------------------- */
-/* Estilos Base del Navbar */
-/* ------------------------- */
 .menu {
-    background-color: #203748 !important; /* Color de fondo oscuro principal */
+    background-color: #203748 !important;
     padding: 0.8rem 1rem;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -20,14 +15,12 @@
 }
 
 .navbar-brand:hover {
-    color: #20A4F3 !important; /* Azul eléctrico al hover */
+    color: #20A4F3 !important;
 }
 
-/* ------------------------- */
 /* Ítems del Menú */
-/* ------------------------- */
 .nav-link {
-    color: #E2E8F0 !important; /* Gris claro para texto */
+    color: #E2E8F0 !important;
     font-weight: 500;
     font-size: 1rem;
     margin: 0 0.5rem;
@@ -38,12 +31,12 @@
 }
 
 .nav-link:hover {
-    color: #20A4F3 !important; /* Azul al hover */
+    color: #20A4F3 !important;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-link.active {
-    color: #07C8A0 !important; /* Verde para ítem activo */
+    color: #07C8A0 !important;
 }
 
 .nav-link.active::after {
@@ -53,31 +46,27 @@
     left: 15%;
     width: 70%;
     height: 2px;
-    background-color: #07C8A0; /* Subrayado verde */
+    background-color: #73b66d;
 }
 
-/* ------------------------- */
 /* Botón Toggler (Mobile) */
-/* ------------------------- */
 .navbar-toggler {
     border: none !important;
     padding: 0.5rem !important;
 }
 
 .navbar-toggler:focus {
-    box-shadow: 0 0 0 2px rgba(32, 164, 243, 0.5) !important; /* Azul con transparencia */
+    box-shadow: 0 0 0 2px rgba(32, 164, 243, 0.5) !important;
 }
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
 
-/* ------------------------- */
 /* Menú Colapsable (Mobile) */
-/* ------------------------- */
 @media (max-width: 992px) {
     .navbar-collapse {
-        background-color: #2D3748; /* Fondo oscuro para menú mobile */
+        background-color: #2D3748;
         padding: 1rem;
         margin-top: 0.5rem;
         border-radius: 8px;
@@ -93,9 +82,7 @@
     }
 }
 
-/* ------------------------- */
 /* Efectos Especiales */
-/* ------------------------- */
 .navbar {
     position: fixed !important;
     top: 0;
@@ -103,7 +90,6 @@
     z-index: 1030;
 }
 
-/* Animación al hacer scroll */
 .navbar-scrolled {
     background-color: #1a2a3a !important;
     padding: 0.5rem 1rem !important;
