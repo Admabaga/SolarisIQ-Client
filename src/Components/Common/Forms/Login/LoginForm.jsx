@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from 'axios'
 import { EnvelopeFill, LockFill, Eye, EyeSlash } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import './LoginForm.css'
 
 export default function LoginForm() {
@@ -23,7 +23,9 @@ export default function LoginForm() {
                     password,
                 })
             setRespuestaServerError(false)
-            toast.success('Sesión iniciada!');
+            toast.success('¡Sesión iniciada!', {
+                duration: 3000,
+              });
             navigate("/lobby")
         } catch (error) {
             const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado"
