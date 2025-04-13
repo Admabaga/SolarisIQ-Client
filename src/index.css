@@ -45,8 +45,8 @@ body,
 }
 
 .profile-content-container {
-  flex: 1; /* Permite que este contenedor crezca para ocupar el espacio restante */
+  flex: 1;
   padding: 2rem;
-  margin-left: 250px; /* Igual al ancho de tu navbar */
-  margin-top: 4rem !important;
+  margin-left: 250px;
+  margin-top: 3.5rem !important;
 }

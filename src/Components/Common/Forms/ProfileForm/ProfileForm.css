@@ -26,14 +26,14 @@
   
   .profile-form-input:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #5185f5;
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
   }
   
   .profile-submit-button {
     width: 100%;
     padding: 1rem;
-    background-color: #2563eb;
+    background-color: #05751d !important;
     color: white;
     border: none;
     border-radius: 6px;
@@ -43,7 +43,7 @@
   }
   
   .profile-submit-button:hover {
-    background-color: #1d4ed8;
+    background-color: #014410 !important;
   }
   
   .profile-error-message {
