@@ -1,4 +1,4 @@
-import { NavBarNotLogged } from '../../Common/Navs/NavBarNotLogged.jsx';
+import { NavBarNotLogged } from '../../Common/Navs/NavBarNotLogged/NavBarNotLogged.jsx';
 import Footer from '../../Common/Footer/Footer.jsx';
 import Hero from '../../Images/EolicEnergy.svg';
 import { useNavigate } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import { NavBarLogged } from "../../Common/Navs/NavBarLogged";
+import { NavBarLogged } from "../../Common/Navs/NavBarLogged/NavBarLogged";
 import Footer from "../../Common/Footer/Footer";
 import RegisterForm from "../../Common/Forms/RegisterForm/RegisterForm";
 import './Lobby.css'

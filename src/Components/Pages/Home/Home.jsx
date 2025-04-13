@@ -1,4 +1,4 @@
-import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged.jsx";
+import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged/NavBarNotLogged.jsx";
 import Footer from "../../Common/Footer/Footer.jsx";
 import BannerImg from '../../Images/Banner.jpg';
 import LoginForm from "../../Common/Forms/Login/LoginForm.jsx";

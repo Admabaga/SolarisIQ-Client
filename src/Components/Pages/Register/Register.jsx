@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import RegisterForm from "../../Common/Forms/RegisterForm/RegisterForm";
-import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged.jsx";
+import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged/NavBarNotLogged.jsx";
 import RegisterAbout from "../../Common/About/RegisterAbout.jsx";
 import Footer from "../../Common/Footer/Footer.jsx";
 import ValidationRegisterCode from "../../Common/ValidationRegisterCode/ValidationRegisterCode.jsx"
