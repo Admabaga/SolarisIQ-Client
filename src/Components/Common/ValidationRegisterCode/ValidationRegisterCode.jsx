@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ValidationRegisterCode.css';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
     const [code, setCode] = useState(['', '', '', '', '', '']);
@@ -64,8 +64,10 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
                     headers: { 'Content-Type': 'application/json' },
                 }
             );
-            toast.success('Usuario registrado exitosamente!');
-            onClose();
+            toast.success('¡Usuario registrado con exito!', {
+                duration: 3000,
+            });
+
         } catch (error) {
             console.error('Error validating code:', error);
             setError('Ocurrió un error al validar el código');
