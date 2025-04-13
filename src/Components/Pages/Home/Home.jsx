@@ -1,12 +1,21 @@
-import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged.jsx"
-import Footer from "../../Common/Footer/Footer.jsx"
-import BannerImg from '../../Images/Banner.jpg'
-import LoginForm from "../../Common/Forms/Login/LoginForm.jsx"
-import EnergyLogo from '../../Images/clean.png'
-import EnergyImage from '../../Images/renewable-energy-svgrepo-com.svg'
-import './Home.css'
+import { NavBarNotLogged } from "../../Common/Navs/NavBarNotLogged.jsx";
+import Footer from "../../Common/Footer/Footer.jsx";
+import BannerImg from '../../Images/Banner.jpg';
+import LoginForm from "../../Common/Forms/Login/LoginForm.jsx";
+import EnergyLogo from '../../Images/clean.png';
+import EnergyImage from '../../Images/renewable-energy-svgrepo-com.svg';
+import { useRef } from 'react';
+import { useNavigate } from "react-router-dom";
+import './Home.css';
+
 
 export default function Home() {
+    const loginSectionRef = useRef(null);
+    const handleScrollToLogin = () => {
+        loginSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+    const navigate = useNavigate()
+
     return (
         <>
             <NavBarNotLogged />
@@ -15,17 +24,32 @@ export default function Home() {
                     className="banner text-white"
                     style={{ backgroundImage: `url(${BannerImg})` }}
                 >
-                    <h2>Solaris IQ</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates tempore quaerat,
-                        temporibus iusto sapiente ipsam porro optio sed, id odio ipsum quo corrupti ad obcaecati
-                        illo mollitia iure dolorum! Quis autem ea neque provident aliquam unde quisquam?
-                        Mollitia excepturi, labore molestias saepe recusandae veritatis perspiciatis voluptas fuga,
-                        nostrum facilis sed!
-                    </p>
-                    <button className='btn btn-success'>Ver más</button>
+                    <div class="energy-banner">
+                        <h1>Solaris IQ</h1><br />
+                        <h2>Energía Inteligente = ♻️ + 💡 + 💰</h2>
+                        <p>
+                            La fórmula perfecta: <strong>Solaris IQ</strong> te enseña renovables,
+                            analiza tus patrones de consumo y revela dónde ahorrar.
+                            ¡Convierte datos en árboles plantados y euros salvados!
+                        </p>
+                    </div>
+                    <button
+                        className="btn btn-success my-2 mx-2"
+                        onClick={() => navigate("/register")}
+                        aria-label="Registrarse en la aplicación Solaris IQ"
+                    >
+                        ¡Regístrate ahora!
+                    </button>
+                    <button
+                        className='btn btn-success my-2 mx-2'
+                        onClick={handleScrollToLogin}
+                        aria-label="Ver más información y acceder al formulario de inicio de sesión"
+                    >
+                        ¡Inicia sesión!
+                    </button>
+
                 </div>
-                <div className="login-section-wrapper">
+                <div className="login-section-wrapper" ref={loginSectionRef}>
                     <div className="login-container">
                         <div className="cards-container">
                             <div className="login-side-info">
@@ -56,8 +80,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-
             <Footer />
         </>
-    )
+    );
 }
