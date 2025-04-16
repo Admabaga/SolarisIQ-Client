@@ -13,18 +13,13 @@ const ProfileForm = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        // Configuración directa de Axios para esta petición
-        const response = await axios.get('http://localhost:8080/users',  {
+        const response = await axios.get('http://localhost:8080/users', {
           withCredentials: true
         }); 
         setFormData(response.data);
       } catch (error) {
         console.error('Error al obtener usuario:', error);
-        
-        // Manejo específico de errores 403
         if (error.response?.status === 403) {
-          // Agrega esto temporalmente para diagnóstico
-console.log('Cookies actuales:', document.cookie);
           toast.error('Acceso denegado. Verifica tu autenticación.');
           console.log('Detalles del error 403:', error.response.data);
         }
@@ -37,8 +32,8 @@ console.log('Cookies actuales:', document.cookie);
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.put('http://localhost:8080/users', formData, {
-        withCredentials: true // Igual que en GET
+      await axios.patch('http://localhost:8080/users', formData, {
+        withCredentials: true
       });
       toast.success('Perfil actualizado correctamente!');
     } catch (error) {
