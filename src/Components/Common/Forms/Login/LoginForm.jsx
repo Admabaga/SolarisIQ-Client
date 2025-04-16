@@ -21,6 +21,8 @@ export default function LoginForm() {
                 {
                     email,
                     password,
+                },{
+                    withCredentials: true
                 })
             setRespuestaServerError(false)
             toast.success('¡Sesión iniciada!', {

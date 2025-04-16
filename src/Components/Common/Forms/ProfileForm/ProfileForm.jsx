@@ -1,21 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 import './ProfileForm.css';
 
 const ProfileForm = () => {
   const [formData, setFormData] = useState({
-    name: 'Juan Pérez',
-    email: 'juan@example.com',
-    phone: '+51 987654321',
+    name: '',
+    email: '',
+    phone: '',
   });
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        // Configuración directa de Axios para esta petición
+        const response = await axios.get('http://localhost:8080/users',  {
+          withCredentials: true
+        }); 
+        setFormData(response.data);
+      } catch (error) {
+        console.error('Error al obtener usuario:', error);
+        
+        // Manejo específico de errores 403
+        if (error.response?.status === 403) {
+          // Agrega esto temporalmente para diagnóstico
+console.log('Cookies actuales:', document.cookie);
+          toast.error('Acceso denegado. Verifica tu autenticación.');
+          console.log('Detalles del error 403:', error.response.data);
+        }
+      }
+    };
+    
+    getUser();
+  }, []);
+
+  const updateUser = async (e) => {
     e.preventDefault();
-    toast.success('Perfil actualizado correctamente!');
+    try {
+      await axios.put('http://localhost:8080/users', formData, {
+        withCredentials: true // Igual que en GET
+      });
+      toast.success('Perfil actualizado correctamente!');
+    } catch (error) {
+      console.error('Error al actualizar:', error);
+      toast.error(error.response?.data?.message || 'Error al actualizar');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="profile-form-container">
+    <form onSubmit={updateUser} className="profile-form-container">
       <div className="profile-form-group">
         <label className="profile-form-label">Nombre</label>
         <input
