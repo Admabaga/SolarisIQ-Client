@@ -24,7 +24,7 @@ export default function Home() {
                     className="banner text-white"
                     style={{ backgroundImage: `url(${BannerImg})` }}
                 >
-                    <div class="energy-banner">
+                    <div className="energy-banner">
                         <h1>Solaris IQ</h1><br />
                         <h2>Energía Inteligente = ♻️ + 💡 + 💰</h2>
                         <p>

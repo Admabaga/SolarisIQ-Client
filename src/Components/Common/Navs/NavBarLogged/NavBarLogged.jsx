@@ -28,22 +28,10 @@ export function NavBarLogged() {
         <div className="navbar-vertical-container">
             <nav className="navbar navbar-dark navbar-vertical">
                 <div className="container-fluid flex-column align-items-start">
-                    <div className="d-flex w-100 align-items-center justify-content-between d-md-none">
-                        <div style={{
-                            width: '50px',
-                            height: '50px',
-                            borderRadius: '50%',
-                            overflow: 'hidden',
-                        }}>
-                            <img
-                                src={Logo}
-                                alt="Solaris IQ Logo"
-                                style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover'
-                                }}
-                            />
+                    {/* Header para móvil y tablet (hasta 987px) */}
+                    <div className="d-flex w-100 align-items-center justify-content-between d-lg-none mobile-header">
+                        <div className="mobile-logo">
+                            <img src={Logo} alt="Solaris IQ Logo" />
                         </div>
                         <button 
                             className="navbar-toggler"
@@ -54,27 +42,17 @@ export function NavBarLogged() {
                             <span className="navbar-toggler-icon"></span>
                         </button>
                     </div>
-                    <div className={`d-none d-md-flex flex-column align-items-center w-100`}>
-                        <div style={{
-                            width: '80px',
-                            height: '80px',
-                            borderRadius: '50%',
-                            overflow: 'hidden',
-                            margin: '0 auto 1rem'
-                        }}>
-                            <img
-                                src={Logo}
-                                alt="Solaris IQ Logo"
-                                style={{
-                                    width: '100%',
-                                    height: '100%',
-                                    objectFit: 'cover'
-                                }}
-                            />
+
+                    {/* Logo y marca para desktop (solo visible arriba de 987px) */}
+                    <div className="d-none d-lg-flex flex-column align-items-center w-100 desktop-header">
+                        <div className="desktop-logo">
+                            <img src={Logo} alt="Solaris IQ Logo" />
                         </div>
                         <a className="navbar-brand mb-4" href="/lobby">Solaris IQ</a>
                     </div>
-                    <div className={`${mobileMenuOpen ? 'd-block' : 'd-none'} d-md-block w-100`}>
+
+                    {/* Menú principal - versión móvil/tablet (hasta 987px) */}
+                    <div className={`mobile-menu ${mobileMenuOpen ? 'show' : ''} d-lg-none w-100`}>
                         <ul className="navbar-nav flex-column w-100">
                             <li className="nav-item">
                                 <NavLink
@@ -152,6 +130,85 @@ export function NavBarLogged() {
                                         setShowLogoutModal(true);
                                         setMobileMenuOpen(false);
                                     }}
+                                >
+                                    <i className="bi bi-box-arrow-right me-2"></i>
+                                    Cerrar sesión
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Menú para desktop (solo visible arriba de 987px) */}
+                    <div className="d-none d-lg-flex flex-column w-100 desktop-menu">
+                        <ul className="navbar-nav flex-column w-100">
+                            <li className="nav-item">
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        isActive ? "nav-link active" : "nav-link"
+                                    }
+                                    to="/lobby"
+                                    end
+                                >
+                                    Inicio
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <div
+                                    className={`nav-link ${openSubmenu === 'servicios' ? 'active' : ''}`}
+                                    onClick={() => toggleSubmenu('servicios')}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    Servicios
+                                </div>
+                                {openSubmenu === 'servicios' && (
+                                    <ul className="submenu ps-3">
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/servicios/instalacion"
+                                            >
+                                                Instalación
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/servicios/mantenimiento"
+                                            >
+                                                Mantenimiento
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/servicios/diagnostico"
+                                            >
+                                                Diagnóstico
+                                            </NavLink>
+                                        </li>
+                                    </ul>
+                                )}
+                            </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        isActive ? "nav-link active" : "nav-link"
+                                    }
+                                    to="/profile"
+                                >
+                                    Profile
+                                </NavLink>
+                            </li>
+                            <li className="nav-item logout-item">
+                                <button
+                                    className="nav-link logout-btn"
+                                    onClick={() => setShowLogoutModal(true)}
                                 >
                                     <i className="bi bi-box-arrow-right me-2"></i>
                                     Cerrar sesión
