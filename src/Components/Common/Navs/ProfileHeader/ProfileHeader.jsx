@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ProfileHeader.css';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({formData}) => {
   const [avatar, setAvatar] = useState('https://randomuser.me/api/portraits/men/1.jpg');
 
   const handleAvatarChange = (e) => {
@@ -28,7 +28,7 @@ const ProfileHeader = () => {
         />
       </label>
       <div className="profile-user-info">
-        <h2>Juan Pérez</h2>
+        <h2>{formData.name}</h2>
         <p>Desarrollador Frontend</p>
         <p>Miembro desde: Enero 2023</p>
       </div>

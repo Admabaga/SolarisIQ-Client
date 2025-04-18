@@ -1,33 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import './ProfileForm.css';
 
-const ProfileForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-  });
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const response = await axios.get('http://localhost:8080/users', {
-          withCredentials: true
-        }); 
-        setFormData(response.data);
-      } catch (error) {
-        console.error('Error al obtener usuario:', error);
-        if (error.response?.status === 403) {
-          toast.error('Acceso denegado. Verifica tu autenticación.');
-          console.log('Detalles del error 403:', error.response.data);
-        }
-      }
-    };
-    
-    getUser();
-  }, []);
+const ProfileForm = ({formData, setFormData}) => {
 
   const updateUser = async (e) => {
     e.preventDefault();
