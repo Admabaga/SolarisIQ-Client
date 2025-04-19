@@ -1,44 +1,54 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 import './PaswordForm.css';
 
 const PasswordForm = () => {
   const [passwords, setPasswords] = useState({
-    current: '',
-    new: '',
+    oldPassword: '',
+    newPassword: '',
     confirm: '',
   });
-  const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const validatePassword = (password) => {
-    const hasMinLength = password.length >= 8;
-    const hasNumber = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*]/.test(password);
-    return hasMinLength && hasNumber && hasSpecialChar;
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newErrors = {};
+    const csrfToken = getCookie('XSRF-TOKEN');
 
-    if (!passwords.current) newErrors.current = 'La contraseña actual es requerida';
-    if (!validatePassword(passwords.new)) {
-      newErrors.new = 'La contraseña debe tener 8+ caracteres, un número y un símbolo (!@#$%^&*)';
-    }
-    if (passwords.new !== passwords.confirm) {
-      newErrors.confirm = 'Las contraseñas no coinciden';
-    }
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      toast.error('Por favor corrige los errores');
+    if (passwords.newPassword !== passwords.confirm) {
+      toast.error('Las contraseñas no coinciden');
       return;
     }
 
-    toast.success('¡Contraseña actualizada correctamente!');
-    setPasswords({ current: '', new: '', confirm: '' });
-    setErrors({});
+    setIsLoading(true);
+    try {
+      await axios.patch('http://localhost:8080/users/updatePassword', passwords, {
+        withCredentials: true,
+        headers: { 
+          'Content-Type': 'application/json',
+          'X-XSRF-TOKEN': csrfToken
+        },
+      });
+
+      toast.success('¡Contraseña actualizada correctamente!');
+      setPasswords({ oldPassword: '', newPassword: '', confirm: '' });
+    } catch (error) {
+      toast.error('Error al actualizar la contraseña');
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -48,69 +58,70 @@ const PasswordForm = () => {
         <div style={{ position: 'relative' }}>
           <input
             type={showPassword ? 'text' : 'password'}
-            value={passwords.current}
-            onChange={(e) => setPasswords({ ...passwords, current: e.target.value })}
+            value={passwords.oldPassword}
+            onChange={(e) => setPasswords({ ...passwords, oldPassword: e.target.value })}
             className="profile-form-input"
           />
           <span
             className="profile-password-toggle"
-            onClick={() => setShowPassword(!showPassword)}
+            onClick={toggleShowPassword}
           >
             {showPassword ? '🙈' : '👁️'}
           </span>
         </div>
-        {errors.current && (
-          <span className="profile-error-message">{errors.current}</span>
-        )}
       </div>
 
       <div className="profile-form-group">
         <label className="profile-form-label">Nueva Contraseña</label>
-        <input
-          type={showPassword ? 'text' : 'password'}
-          value={passwords.new}
-          onChange={(e) => {
-            setPasswords({ ...passwords, new: e.target.value });
-            setErrors({ ...errors, new: '' });
-          }}
-          className="profile-form-input"
-        />
+        <div style={{ position: 'relative' }}>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            value={passwords.newPassword}
+            onChange={(e) => setPasswords({ ...passwords, newPassword: e.target.value })}
+            className="profile-form-input"
+          />
+          <span
+            className="profile-password-toggle"
+            onClick={toggleShowPassword}
+          >
+            {showPassword ? '🙈' : '👁️'}
+          </span>
+        </div>
         <div className="profile-password-strength">
           <div
             className="profile-strength-bar"
             style={{
-              width: `${Math.min(passwords.new.length * 10, 100)}%`,
-              background: passwords.new.length >= 8 ? '#48bb78' : '#e53e3e',
+              width: `${Math.min(passwords.newPassword.length * 10, 100)}%`,
+              background: passwords.newPassword.length >= 8 ? '#48bb78' : '#e53e3e',
             }}
           />
         </div>
-        {errors.new && (
-          <span className="profile-error-message">{errors.new}</span>
-        )}
       </div>
 
       <div className="profile-form-group">
         <label className="profile-form-label">Confirmar Contraseña</label>
-        <input
-          type={showPassword ? 'text' : 'password'}
-          value={passwords.confirm}
-          onChange={(e) => {
-            setPasswords({ ...passwords, confirm: e.target.value });
-            setErrors({ ...errors, confirm: '' });
-          }}
-          className="profile-form-input"
-        />
-        {errors.confirm && (
-          <span className="profile-error-message">{errors.confirm}</span>
-        )}
+        <div style={{ position: 'relative' }}>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            value={passwords.confirm}
+            onChange={(e) => setPasswords({ ...passwords, confirm: e.target.value })}
+            className="profile-form-input"
+          />
+          <span
+            className="profile-password-toggle"
+            onClick={toggleShowPassword}
+          >
+            {showPassword ? '🙈' : '👁️'}
+          </span>
+        </div>
       </div>
 
       <button
         type="submit"
         className="profile-submit-button"
-        disabled={!passwords.current || !passwords.new || !passwords.confirm}
+        disabled={!passwords.oldPassword || !passwords.newPassword || !passwords.confirm || isLoading}
       >
-        Cambiar Contraseña
+        {isLoading ? 'Procesando...' : 'Cambiar Contraseña'}
       </button>
     </form>
   );
