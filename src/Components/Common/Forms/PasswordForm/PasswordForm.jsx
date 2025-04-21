@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { Eye, EyeSlash } from 'react-bootstrap-icons';
 import axios from 'axios';
 import './PaswordForm.css';
 
@@ -55,38 +56,22 @@ const PasswordForm = () => {
     <form onSubmit={handleSubmit} className="profile-form-container">
       <div className="profile-form-group">
         <label className="profile-form-label">Contraseña Actual</label>
-        <div style={{ position: 'relative' }}>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            value={passwords.oldPassword}
-            onChange={(e) => setPasswords({ ...passwords, oldPassword: e.target.value })}
-            className="profile-form-input"
-          />
-          <span
-            className="profile-password-toggle"
-            onClick={toggleShowPassword}
-          >
-            {showPassword ? '🙈' : '👁️'}
-          </span>
-        </div>
+        <input
+          type={showPassword ? 'text' : 'password'}
+          value={passwords.oldPassword}
+          onChange={(e) => setPasswords({ ...passwords, oldPassword: e.target.value })}
+          className="profile-form-input"
+        />
       </div>
 
       <div className="profile-form-group">
         <label className="profile-form-label">Nueva Contraseña</label>
-        <div style={{ position: 'relative' }}>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            value={passwords.newPassword}
-            onChange={(e) => setPasswords({ ...passwords, newPassword: e.target.value })}
-            className="profile-form-input"
-          />
-          <span
-            className="profile-password-toggle"
-            onClick={toggleShowPassword}
-          >
-            {showPassword ? '🙈' : '👁️'}
-          </span>
-        </div>
+        <input
+          type={showPassword ? 'text' : 'password'}
+          value={passwords.newPassword}
+          onChange={(e) => setPasswords({ ...passwords, newPassword: e.target.value })}
+          className="profile-form-input"
+        />
         <div className="profile-password-strength">
           <div
             className="profile-strength-bar"
@@ -100,20 +85,24 @@ const PasswordForm = () => {
 
       <div className="profile-form-group">
         <label className="profile-form-label">Confirmar Contraseña</label>
-        <div style={{ position: 'relative' }}>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            value={passwords.confirm}
-            onChange={(e) => setPasswords({ ...passwords, confirm: e.target.value })}
-            className="profile-form-input"
-          />
-          <span
-            className="profile-password-toggle"
-            onClick={toggleShowPassword}
-          >
-            {showPassword ? '🙈' : '👁️'}
+        <input
+          type={showPassword ? 'text' : 'password'}
+          value={passwords.confirm}
+          onChange={(e) => setPasswords({ ...passwords, confirm: e.target.value })}
+          className="profile-form-input"
+        />
+      </div>
+      <div style={{ textAlign: 'right', margin: '10px 0' }}>
+        <span
+          className="profile-password-toggle"
+          onClick={toggleShowPassword}
+          style={{ cursor: 'pointer', color: '#666' }}
+        >
+          {showPassword ? <EyeSlash size={20} /> : <Eye size={20} />}
+          <span style={{ marginLeft: '5px' }}>
+            {showPassword ? 'Ocultar contraseñas' : 'Mostrar contraseñas'}
           </span>
-        </div>
+        </span>
       </div>
 
       <button

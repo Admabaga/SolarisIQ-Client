@@ -59,9 +59,13 @@
   }
   
   .profile-password-toggle {
-    position: absolute;
-    right: 10px;
-    top: 38px;
-    cursor: pointer;
-    color: #64748b;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  
+  .profile-password-toggle:hover {
+    color: #000;
   }

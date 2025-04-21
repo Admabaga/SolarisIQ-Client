@@ -165,6 +165,7 @@
 }
 
 @media (min-width: 988px) {
+
   .mobile-header,
   .mobile-menu {
     display: none !important;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavBarLogged } from '../../Common/Navs/NavBarLogged/NavBarLogged.jsx';
 import Footer from '../../Common/Footer/Footer.jsx';
-import ProfileHeader from '../../Common/Navs/ProfileHeader/ProfileHeader.jsx'
+import ProfileHeader from '../../Common/Cards/ProfileHeader/ProfileHeader.jsx'
 import ProfileForm from '../../Common/Forms/ProfileForm/ProfileForm.jsx'
 import PasswordForm from '../../Common/Forms/PasswordForm/PasswordForm.jsx';
 import axios from 'axios';

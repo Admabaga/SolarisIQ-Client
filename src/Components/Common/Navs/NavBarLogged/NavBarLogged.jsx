@@ -10,7 +10,7 @@ export function NavBarLogged() {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
-    
+
     const toggleSubmenu = (menu) => {
         setOpenSubmenu(openSubmenu === menu ? null : menu);
     };
@@ -28,12 +28,11 @@ export function NavBarLogged() {
         <div className="navbar-vertical-container">
             <nav className="navbar navbar-dark navbar-vertical">
                 <div className="container-fluid flex-column align-items-start">
-                    {/* Header para móvil y tablet (hasta 987px) */}
                     <div className="d-flex w-100 align-items-center justify-content-between d-lg-none mobile-header">
                         <div className="mobile-logo">
                             <img src={Logo} alt="Solaris IQ Logo" />
                         </div>
-                        <button 
+                        <button
                             className="navbar-toggler"
                             type="button"
                             onClick={toggleMobileMenu}
@@ -42,16 +41,12 @@ export function NavBarLogged() {
                             <span className="navbar-toggler-icon"></span>
                         </button>
                     </div>
-
-                    {/* Logo y marca para desktop (solo visible arriba de 987px) */}
                     <div className="d-none d-lg-flex flex-column align-items-center w-100 desktop-header">
                         <div className="desktop-logo">
                             <img src={Logo} alt="Solaris IQ Logo" />
                         </div>
                         <a className="navbar-brand mb-4" href="/lobby">Solaris IQ</a>
                     </div>
-
-                    {/* Menú principal - versión móvil/tablet (hasta 987px) */}
                     <div className={`mobile-menu ${mobileMenuOpen ? 'show' : ''} d-lg-none w-100`}>
                         <ul className="navbar-nav flex-column w-100">
                             <li className="nav-item">
@@ -137,8 +132,6 @@ export function NavBarLogged() {
                             </li>
                         </ul>
                     </div>
-
-                    {/* Menú para desktop (solo visible arriba de 987px) */}
                     <div className="d-none d-lg-flex flex-column w-100 desktop-menu">
                         <ul className="navbar-nav flex-column w-100">
                             <li className="nav-item">
@@ -202,7 +195,7 @@ export function NavBarLogged() {
                                     }
                                     to="/profile"
                                 >
-                                    Profile
+                                    Perfil
                                 </NavLink>
                             </li>
                             <li className="nav-item logout-item">

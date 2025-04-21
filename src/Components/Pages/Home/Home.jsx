@@ -51,6 +51,9 @@ export default function Home() {
                 </div>
                 <div className="login-section-wrapper" ref={loginSectionRef}>
                     <div className="login-container">
+                        <div className="form-container">
+                            <LoginForm />
+                        </div>
                         <div className="cards-container">
                             <div className="login-side-info">
                                 <div className="card-image-container">
@@ -73,9 +76,6 @@ export default function Home() {
                                     energético con nuestras herramientas avanzadas.
                                 </p>
                             </div>
-                        </div>
-                        <div className="form-container">
-                            <LoginForm />
                         </div>
                     </div>
                 </div>
