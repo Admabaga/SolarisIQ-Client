@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../../Images/SolairsIconLight.png';
 import { ValidationLogOut } from '../../ValidationLogOut/ValidationLogOut.jsx';
 import Cookies from 'js-cookie'; 
+import axios from 'axios';
 import '../NavBarNotLogged/Navs.css';
 import './VerticalNav.css';
 
@@ -16,12 +17,24 @@ export function NavBarLogged() {
         setOpenSubmenu(openSubmenu === menu ? null : menu);
     };
 
-    const handleLogout = () => {
-        Cookies.remove('jwt', { path: '/' })
-        Cookies.remove('XSRF-TOKEN', { path: '/' })
-        navigate('/', { replace: true });
-        window.location.reload();
-    };
+    function eliminarJWTCookie(nombreCookie) {
+        document.cookie = nombreCookie + "=; path=/; HttpOnly; Secure;";
+      }
+      
+
+    const handleLogout = async () => {
+        try {
+          const response = await axios.post('http://localhost:8080/users/logout');
+          eliminarJWTCookie('jwt');
+          Cookies.remove('XSRF-TOKEN', { path: '/' })
+          navigate('/', { replace: true });
+          window.location.reload(); 
+          console.log(response.data); 
+        } catch (error) {
+          console.log("error al eliminar jwt" + error.message);
+        }
+      };
+      
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
