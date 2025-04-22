@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../../Images/SolairsIconLight.png';
 import { ValidationLogOut } from '../../ValidationLogOut/ValidationLogOut.jsx';
+import Cookies from 'js-cookie'; 
 import '../NavBarNotLogged/Navs.css';
 import './VerticalNav.css';
 
@@ -16,6 +17,8 @@ export function NavBarLogged() {
     };
 
     const handleLogout = () => {
+        Cookies.remove('jwt', { path: '/' })
+        Cookies.remove('XSRF-TOKEN', { path: '/' })
         navigate('/', { replace: true });
         window.location.reload();
     };

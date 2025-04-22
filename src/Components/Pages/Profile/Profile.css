@@ -1,42 +1,4 @@
 
-/* Sección de permisos */
-.profile-permission-section {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.profile-permission-section h3 {
-  color: #2c3e50;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
-}
-
-.profile-stats {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.stat-item {
-  flex: 1;
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #05751d;
-  margin-bottom: 0.5rem;
-}
-
-.stat-label {
-  color: #64748b;
-  font-size: 0.9rem;
-}
-
 /* Navegación de pestañas */
 .profile-tabs-container {
   margin-bottom: 2rem;
