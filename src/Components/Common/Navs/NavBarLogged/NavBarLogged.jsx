@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import Logo from '../../../Images/SolairsIconLight.png';
+import Logo from '../../../Images/Logo.png';
 import { ValidationLogOut } from '../../ValidationLogOut/ValidationLogOut.jsx';
 import Cookies from 'js-cookie'; 
 import axios from 'axios';
@@ -79,23 +79,23 @@ export function NavBarLogged() {
                             </li>
                             <li className="nav-item">
                                 <div
-                                    className={`nav-link ${openSubmenu === 'servicios' ? 'active' : ''}`}
-                                    onClick={() => toggleSubmenu('servicios')}
+                                    className={`nav-link ${openSubmenu === 'consumos' ? 'active' : ''}`}
+                                    onClick={() => toggleSubmenu('consumos')}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    Servicios
+                                    Consumos
                                 </div>
-                                {openSubmenu === 'servicios' && (
+                                {openSubmenu === 'consumos' && (
                                     <ul className="submenu ps-3">
                                         <li>
                                             <NavLink
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/servicios/instalacion"
+                                                to="/consumos/registroConsumo"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
-                                                Instalación
+                                                Agrega tus consumos
                                             </NavLink>
                                         </li>
                                         <li>
@@ -103,7 +103,7 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/servicios/mantenimiento"
+                                                to="/consumos/mantenimiento"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
                                                 Mantenimiento
@@ -114,7 +114,7 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/servicios/diagnostico"
+                                                to="/consumos/diagnostico"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
                                                 Diagnóstico
