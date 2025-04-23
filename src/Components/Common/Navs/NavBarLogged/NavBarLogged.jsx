@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../../Images/Logo.png';
 import { ValidationLogOut } from '../../ValidationLogOut/ValidationLogOut.jsx';
-import Cookies from 'js-cookie'; 
+import Cookies from 'js-cookie';
 import axios from 'axios';
 import '../NavBarNotLogged/Navs.css';
 import './VerticalNav.css';
@@ -12,29 +12,42 @@ export function NavBarLogged() {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
-
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      };
+    
     const toggleSubmenu = (menu) => {
         setOpenSubmenu(openSubmenu === menu ? null : menu);
     };
 
     function eliminarJWTCookie(nombreCookie) {
         document.cookie = nombreCookie + "=; path=/; HttpOnly; Secure;";
-      }
-      
+    }
+
 
     const handleLogout = async () => {
-        try {
-          const response = await axios.post('http://localhost:8080/users/logout');
-          eliminarJWTCookie('jwt');
-          Cookies.remove('XSRF-TOKEN', { path: '/' })
-          navigate('/', { replace: true });
-          window.location.reload(); 
-          console.log(response.data); 
-        } catch (error) {
-          console.log("error al eliminar jwt" + error.message);
-        }
-      };
-      
+        const csrfToken = getCookie('XSRF-TOKEN');
+        // try {
+        //     const response = await axios.post('http://localhost:8080/users/logout',{
+        //         withCredentials: true,
+        //         headers: { 
+        //           'Content-Type': 'application/json',
+        //           'X-XSRF-TOKEN': csrfToken
+        //         },
+        //       })
+        //     eliminarJWTCookie('jwt');
+        //     Cookies.remove('XSRF-TOKEN', { path: '/' })
+
+         navigate('/', { replace: true });
+         window.location.reload();
+        //     console.log(response.data);
+        // } catch (error) {
+        //     console.log("error al eliminar jwt" + error.message);
+        // }
+    };
+
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
@@ -163,22 +176,22 @@ export function NavBarLogged() {
                             </li>
                             <li className="nav-item">
                                 <div
-                                    className={`nav-link ${openSubmenu === 'servicios' ? 'active' : ''}`}
-                                    onClick={() => toggleSubmenu('servicios')}
+                                    className={`nav-link ${openSubmenu === 'consumos' ? 'active' : ''}`}
+                                    onClick={() => toggleSubmenu('consumos')}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    Servicios
+                                    Consumos
                                 </div>
-                                {openSubmenu === 'servicios' && (
+                                {openSubmenu === 'consumos' && (
                                     <ul className="submenu ps-3">
                                         <li>
                                             <NavLink
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/servicios/instalacion"
+                                                to="/consumos/registroConsumo"
                                             >
-                                                Instalación
+                                                Agrega tus consumos
                                             </NavLink>
                                         </li>
                                         <li>
@@ -186,7 +199,7 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/servicios/mantenimiento"
+                                                to="/consumos/mantenimiento"
                                             >
                                                 Mantenimiento
                                             </NavLink>
@@ -196,7 +209,7 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/servicios/diagnostico"
+                                                to="/consumos/diagnostico"
                                             >
                                                 Diagnóstico
                                             </NavLink>

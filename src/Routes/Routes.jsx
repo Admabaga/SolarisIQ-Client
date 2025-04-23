@@ -5,6 +5,7 @@ import Register from '../Components/Pages/Register/Register.jsx';
 import { Toaster } from 'react-hot-toast';
 import AboutUs from '../Components/Pages/AboutUs/AboutUs.jsx';
 import  Profile  from '../Components/Pages/Profile/Profile.jsx';
+import CreateConsumption from '../Components/Pages/Consumption/CreateConsumption/CreateConsumption.jsx'
 export function AppRoutes() {
     return (
         <>
@@ -24,6 +25,7 @@ export function AppRoutes() {
                 <Route path="/profile" element={<Profile />}></Route>
                 <Route path="/register" element={<Register />}></Route>
                 <Route path="/aboutUs" element={<AboutUs />}></Route>
+                <Route path="/consumos/registroConsumo" element={<CreateConsumption />}></Route>
             </Routes>
         </>
     )
