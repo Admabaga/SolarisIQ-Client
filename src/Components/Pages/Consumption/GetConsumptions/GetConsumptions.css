@@ -1,0 +1,76 @@
+.profile-content-container {
+    padding: 2rem 0;
+    min-height: calc(100vh - 150px);
+}
+
+.consumptions-title {
+    color: #065e1c;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.consumptions-subtitle {
+    color: #7f928a;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    gap: 1rem;
+}
+
+.error-container {
+    text-align: center;
+    padding: 2rem;
+    background: #ffeeee;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}
+
+.retry-button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.retry-button:hover {
+    background: #c0392b;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #7f8c8d;
+}
+
+.consumption-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.consumption-cards-grid>* {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

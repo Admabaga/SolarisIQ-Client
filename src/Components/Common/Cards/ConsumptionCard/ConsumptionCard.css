@@ -1,61 +1,88 @@
 .consumption-card {
-    width: 320px;
-    border-radius: 16px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .consumption-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  }
-  
-  .card-image {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    background-color: #f0f0f0;
-  }
-  
-  .card-content {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .card-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  
-  .card-title i {
-    color: #007BFF;
-  }
-  
-  .card-period {
-    font-size: 0.9rem;
-    color: #777;
-    background-color: #f4f6f8;
-    padding: 8px 12px;
-    border-radius: 8px;
-  }
-  
-  .card-value {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #007BFF;
-    text-align: center;
-    border-top: 1px solid #eee;
-    padding-top: 10px;
-  }
-  
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 600px !important;
+  min-height: 350px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.consumption-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.zone-icon {
+  font-size: 2.2rem;
+}
+
+.description {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.causes {
+  margin: 0 0 1rem 1rem;
+  padding-left: 1rem;
+}
+
+.causes li {
+  list-style: disc;
+  margin-bottom: 0.4rem;
+}
+
+.footerConsumptionCard {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.recommendation {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.green-zone {
+  background: linear-gradient(135deg, #a8e063, #56ab2f); /* Verde suave y natural */
+}
+
+.yellow-zone {
+  background: linear-gradient(135deg, #fceabb, #f8b500); /* Amarillo profesional */
+  color: #222;
+}
+
+.red-zone {
+  background: linear-gradient(135deg, #f85032, #e73827); /* Rojo alerta */
+}
+
+.blue-zone {
+  background: linear-gradient(135deg, #89f7fe, #66a6ff); /* Azul eficiente */
+}
+
+.period {
+  font-size: 0.95rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  margin-top: 4px;
+}
+
+.ConsumptionCard-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

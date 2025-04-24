@@ -30,19 +30,19 @@ function Lobby() {
 
                     <section className="lobby-dashboard">
                         <LobbyCard
-                            title="Mi Consumo"
+                            tittle="Mi Consumo"
                             description="Revisa tu consumo mensual, compara con el anterior y analiza tus hábitos."
                             textButton="Ver detalles"
                             onClick={handleConsumoClick}
                         />
                         <LobbyCard
-                            title="Consejos Verdes"
+                            tittle="Consejos Verdes"
                             description="Explora recomendaciones para mejorar tu eficiencia energética."
                             textButton="Ver consejos"
                             onClick={handleConsejosClick}
                         />
                         <LobbyCard
-                            title="Progreso Ambiental"
+                            tittle="Progreso Ambiental"
                             description="Mira cómo tu consumo contribuye a un mundo más sostenible."
                             textButton="Ver progreso"
                             onClick={handleProgresoClick}
