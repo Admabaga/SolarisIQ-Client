@@ -116,10 +116,10 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/consumos/mantenimiento"
+                                                to="/consumos/misConsumos"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
-                                                Mantenimiento
+                                                Mis consumos
                                             </NavLink>
                                         </li>
                                         <li>
@@ -199,9 +199,9 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/consumos/mantenimiento"
+                                                to="/consumos/misConsumos"
                                             >
-                                                Mantenimiento
+                                                Mis consumos
                                             </NavLink>
                                         </li>
                                         <li>
