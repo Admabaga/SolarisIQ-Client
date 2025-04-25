@@ -7,6 +7,9 @@ import AboutUs from '../Components/Pages/AboutUs/AboutUs.jsx';
 import  Profile  from '../Components/Pages/Profile/Profile.jsx';
 import CreateConsumption from '../Components/Pages/Consumption/CreateConsumption/CreateConsumption.jsx'
 import GetConsumptions from '../Components/Pages/Consumption/GetConsumptions/GetConsumptions.jsx';
+import SolarEnergy from '../Components/Pages/SolarEnergy/SolarEnergy.jsx';
+import HydroElectricalEnergy from '../Components/Pages/HydroElectricalEnergy/HydroElectricalEnergy.jsx';
+import EolicEnergy from '../Components/Pages/EolicEnergy/EolicEnergy.jsx';
 export function AppRoutes() {
     return (
         <>
@@ -28,6 +31,9 @@ export function AppRoutes() {
                 <Route path="/aboutUs" element={<AboutUs />}></Route>
                 <Route path="/consumos/registroConsumo" element={<CreateConsumption/>}></Route>
                 <Route path="/consumos/misConsumos" element={<GetConsumptions/>}></Route>
+                <Route path="/energiasRenovables/energiaSolar" element={<SolarEnergy/>}></Route>
+                <Route path="/energiasRenovables/energiaHidroelectrica" element={<HydroElectricalEnergy/>}></Route>
+                <Route path="/energiasRenovables/energiaEolica" element={<EolicEnergy/>}></Route>
             </Routes>
         </>
     )
