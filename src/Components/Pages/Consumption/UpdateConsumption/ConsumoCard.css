@@ -1,0 +1,36 @@
+.consumo-card {
+    width: 100%;
+  }
+  
+  .consumo-card label {
+    display: block;
+    margin: 0.75rem 0;
+  }
+  
+  .consumo-card input {
+    width: 100%;
+    padding: 0.4rem;
+    margin-top: 0.2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .card-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .card-actions button[type='button'] {
+    background: #6c757d;
+  }
+  

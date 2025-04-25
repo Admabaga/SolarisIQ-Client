@@ -16,8 +16,8 @@ export function NavBarLogged() {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) return parts.pop().split(';').shift();
-      };
-    
+    };
+
     const toggleSubmenu = (menu) => {
         setOpenSubmenu(openSubmenu === menu ? null : menu);
     };
@@ -25,7 +25,6 @@ export function NavBarLogged() {
     function eliminarJWTCookie(nombreCookie) {
         document.cookie = nombreCookie + "=; path=/; HttpOnly; Secure;";
     }
-
 
     const handleLogout = async () => {
         const csrfToken = getCookie('XSRF-TOKEN');
@@ -40,14 +39,13 @@ export function NavBarLogged() {
         //     eliminarJWTCookie('jwt');
         //     Cookies.remove('XSRF-TOKEN', { path: '/' })
 
-         navigate('/', { replace: true });
-         window.location.reload();
+        navigate('/', { replace: true });
+        window.location.reload();
         //     console.log(response.data);
         // } catch (error) {
         //     console.log("error al eliminar jwt" + error.message);
         // }
     };
-
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
@@ -92,6 +90,52 @@ export function NavBarLogged() {
                             </li>
                             <li className="nav-item">
                                 <div
+                                    className={`nav-link ${openSubmenu === 'energiasRenovables' ? 'active' : ''}`}
+                                    onClick={() => toggleSubmenu('energiasRenovables')}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    Energias renovables
+                                </div>
+                                {openSubmenu === 'energiasRenovables' && (
+                                    <ul className="submenu ps-3">
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/energiasRenovables/energiaEolica"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                            >
+                                                Energia eolica
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/energiasRenovables/energiaHidroelectrica"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                            >
+                                                Energia hidroelectrica
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/energiasRenovables/energiaSolar"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                            >
+                                                Energia solar
+                                            </NavLink>
+                                        </li>
+                                    </ul>
+                                )}
+                            </li>
+                            <li className="nav-item">
+                                <div
                                     className={`nav-link ${openSubmenu === 'consumos' ? 'active' : ''}`}
                                     onClick={() => toggleSubmenu('consumos')}
                                     style={{ cursor: 'pointer' }}
@@ -127,10 +171,10 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/consumos/diagnostico"
+                                                to="/consumos/actualizarConsumos"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
-                                                Diagnóstico
+                                                Actualiza tus consumos
                                             </NavLink>
                                         </li>
                                     </ul>
@@ -176,6 +220,49 @@ export function NavBarLogged() {
                             </li>
                             <li className="nav-item">
                                 <div
+                                    className={`nav-link ${openSubmenu === 'energiasRenovables' ? 'active' : ''}`}
+                                    onClick={() => toggleSubmenu('energiasRenovables')}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    Energias renovables
+                                </div>
+                                {openSubmenu === 'energiasRenovables' && (
+                                    <ul className="submenu ps-3">
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/energiasRenovables/energiaEolica"
+                                            >
+                                                Energia eolica
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/energiasRenovables/energiaHidroelectrica"
+                                            >
+                                                Energia Hidroelectrica
+                                            </NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink
+                                                className={({ isActive }) =>
+                                                    isActive ? "nav-link active" : "nav-link"
+                                                }
+                                                to="/energiasRenovables/energiaSolar"
+                                            >
+                                                Energia solar
+                                            </NavLink>
+                                        </li>
+                                    </ul>
+                                )}
+                            </li>
+                            <li className="nav-item">
+                                <div
                                     className={`nav-link ${openSubmenu === 'consumos' ? 'active' : ''}`}
                                     onClick={() => toggleSubmenu('consumos')}
                                     style={{ cursor: 'pointer' }}
@@ -209,9 +296,9 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/consumos/diagnostico"
+                                                to="/consumos/actualizarConsumos"
                                             >
-                                                Diagnóstico
+                                                Actualizar consumos
                                             </NavLink>
                                         </li>
                                     </ul>

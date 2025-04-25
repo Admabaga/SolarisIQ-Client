@@ -118,7 +118,7 @@
   margin-bottom: 0;
 }
 
-.card-image-container {
+.card-image-container-home {
   width: 120px;
   height: 120px;
   margin-bottom: 1.5rem;
@@ -127,7 +127,7 @@
   justify-content: center;
 }
 
-.card-image {
+.card-image-home {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

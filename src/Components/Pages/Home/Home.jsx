@@ -56,8 +56,8 @@ export default function Home() {
                         </div>
                         <div className="cards-container">
                             <div className="login-side-info">
-                                <div className="card-image-container">
-                                    <img src={EnergyLogo} alt="Solar icon" className="card-image" />
+                                <div className="card-image-container-home">
+                                    <img src={EnergyLogo} alt="Solar icon" className="card-image-home" />
                                 </div>
                                 <h3 className="card-title">Impulsa tu energía con Solaris IQ</h3>
                                 <p className="card-text">
@@ -67,8 +67,8 @@ export default function Home() {
                             </div>
 
                             <div className="login-side-info">
-                                <div className="card-image-container">
-                                    <img src={EnergyImage} alt="Solar icon" className="card-image" />
+                                <div className="card-image-container-home">
+                                    <img src={EnergyImage} alt="Solar icon" className="card-image-home" />
                                 </div>
                                 <h3 className="card-title">Monitorea tu progreso</h3>
                                 <p className="card-text">
