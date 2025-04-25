@@ -171,10 +171,10 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/consumos/diagnostico"
+                                                to="/consumos/actualizarConsumos"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
-                                                Diagnóstico
+                                                Actualiza tus consumos
                                             </NavLink>
                                         </li>
                                     </ul>
@@ -296,9 +296,9 @@ export function NavBarLogged() {
                                                 className={({ isActive }) =>
                                                     isActive ? "nav-link active" : "nav-link"
                                                 }
-                                                to="/consumos/diagnostico"
+                                                to="/consumos/actualizarConsumos"
                                             >
-                                                Diagnóstico
+                                                Actualizar consumos
                                             </NavLink>
                                         </li>
                                     </ul>

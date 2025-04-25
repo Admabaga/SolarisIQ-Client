@@ -10,6 +10,7 @@ import GetConsumptions from '../Components/Pages/Consumption/GetConsumptions/Get
 import SolarEnergy from '../Components/Pages/SolarEnergy/SolarEnergy.jsx';
 import HydroElectricalEnergy from '../Components/Pages/HydroElectricalEnergy/HydroElectricalEnergy.jsx';
 import EolicEnergy from '../Components/Pages/EolicEnergy/EolicEnergy.jsx';
+import UpdateConsumption from '../Components/Pages/Consumption/UpdateConsumption/UpdateConsumption.jsx';
 export function AppRoutes() {
     return (
         <>
@@ -31,6 +32,7 @@ export function AppRoutes() {
                 <Route path="/aboutUs" element={<AboutUs />}></Route>
                 <Route path="/consumos/registroConsumo" element={<CreateConsumption/>}></Route>
                 <Route path="/consumos/misConsumos" element={<GetConsumptions/>}></Route>
+                <Route path="/consumos/actualizarConsumos" element={<UpdateConsumption/>}></Route>
                 <Route path="/energiasRenovables/energiaSolar" element={<SolarEnergy/>}></Route>
                 <Route path="/energiasRenovables/energiaHidroelectrica" element={<HydroElectricalEnergy/>}></Route>
                 <Route path="/energiasRenovables/energiaEolica" element={<EolicEnergy/>}></Route>
