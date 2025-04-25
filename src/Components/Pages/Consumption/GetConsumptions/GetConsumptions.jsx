@@ -36,12 +36,10 @@ export default function GetConsumptions() {
                 <div className="profile-content-container">
                     {!loading && !error && consumptions.length > 0 && (
                         <ConsumptionGraph data={consumptions} />
-                    )}
-
+                    )} <br />
                     <h2 className="consumptions-title">Historial de Consumo</h2>
                     <p className="consumptions-subtitle">Revisa tus períodos de consumo y eficiencia energética</p>
-
-                    <div className="consumption-cards-grid"> 
+                    <div className="consumption-cards-grid">
                         {loading ? (
                             <div className="loading-container">
                                 <p>Cargando tus consumos...</p>

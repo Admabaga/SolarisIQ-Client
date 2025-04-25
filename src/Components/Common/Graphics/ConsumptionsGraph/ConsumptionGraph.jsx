@@ -41,34 +41,36 @@ export default function ConsumptionGraph({ data }) {
     }));
 
     return (
-        <div className="chart-wrapper">
+        <>
             <h3 className="chart-title">Tendencia de Consumo Energético</h3>
-            <ResponsiveContainer width="100%" height={400}>
-                <LineChart
-                    data={formattedData}
-                    margin={{ top: 20, right: 30, left: 0, bottom: 40 }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                        dataKey="name"
-                        tick={<CustomTick />}
-                        interval={0}
-                    />
-                    <YAxis />
-                    <Tooltip
-                        formatter={(value) => `${value} kWh`}
-                        labelFormatter={(label) => `Período: ${label}`}
-                    />
-                    <Line
-                        type="monotone"
-                        dataKey="Consumo"
-                        stroke="#56ab2f"
-                        strokeWidth={3}
-                        dot={{ r: 4 }}
-                        activeDot={{ r: 6 }}
-                    />
-                </LineChart>
-            </ResponsiveContainer>
-        </div>
+            <div className="chart-wrapper">
+                <ResponsiveContainer width="100%" height={400}>
+                    <LineChart
+                        data={formattedData}
+                        margin={{ top: 20, right: 30, left: 0, bottom: 40 }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis
+                            dataKey="name"
+                            tick={<CustomTick />}
+                            interval={0}
+                        />
+                        <YAxis />
+                        <Tooltip
+                            formatter={(value) => `${value} kWh`}
+                            labelFormatter={(label) => `Período: ${label}`}
+                        />
+                        <Line
+                            type="monotone"
+                            dataKey="Consumo"
+                            stroke="#56ab2f"
+                            strokeWidth={3}
+                            dot={{ r: 4 }}
+                            activeDot={{ r: 6 }}
+                        />
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
+        </>
     );
 }
