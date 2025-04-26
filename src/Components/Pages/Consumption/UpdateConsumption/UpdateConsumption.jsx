@@ -59,6 +59,7 @@ export default function UpdateConsumption() {
       <div className="profile-app-container">
         <NavBarLogged />
         <div className="profile-content-container">
+        <h2 className="consumptions-title ">Actualiza tus Consumos</h2>
           <motion.div
             className="tabla-consumos-container"
             initial={{ opacity: 0, y: 20 }}

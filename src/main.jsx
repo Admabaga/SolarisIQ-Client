@@ -4,10 +4,10 @@ import './index.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle.js'
 import { BrowserRouter } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap.bundle.js";
 import { AppRoutes } from './Routes/Routes.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "react-date-range/dist/styles.css"
+import "react-date-range/dist/theme/default.css"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

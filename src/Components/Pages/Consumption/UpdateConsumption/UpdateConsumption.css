@@ -14,7 +14,7 @@
 }
 
 .tabla-consumos th {
-  background-color: #f8f9fa;
+  background-color: #c3ebd4;
   color: #495057;
   font-weight: 600;
   padding: 1rem;
@@ -30,7 +30,7 @@
 }
 
 .tabla-consumos tr:hover {
-  background-color: #f8f9fa;
+  background-color: #daf8e9;
   cursor: pointer;
 }
 

@@ -4,8 +4,6 @@ import { useState } from "react"
 import { DateRange } from "react-date-range"
 import { toast } from 'react-hot-toast'
 import ApiClient from "../../../../Utils/ApiClient/ApiClient.jsx"
-import "react-date-range/dist/styles.css"
-import "react-date-range/dist/theme/default.css"
 import './CreateConsumption.css'
 
 export default function CreateÇonsumption() {
@@ -51,7 +49,7 @@ export default function CreateÇonsumption() {
                 <NavBarLogged />
                 <div className="profile-content-container">
                     <div className="energy-container">
-                        <h2 className="energy-title">Registro de Consumo Energético</h2>
+                        <h2 className="consumptions-title ">Registra tu Consumo Energético</h2>
                         <form onSubmit={handleSubmit} className="energy-form-container">
                             <div className="profile-form-group">
                                 <label className="form-label">Selecciona el periodo:</label>
