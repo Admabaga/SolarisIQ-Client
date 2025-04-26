@@ -1,9 +1,10 @@
 import './UpdateConsumption.css';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { ConsumoCard } from './ConsumoCard';
+import { UpdateConsumptionCard } from '../../../Common/Cards/UpdateConsumptionCard/UpdateConsumptionCard';
 import { motion } from 'framer-motion';
+import { toast } from 'react-hot-toast'
 import Footer from '../../../Common/Footer/Footer';
+import ApiClient from '../../../../Utils/ApiClient/ApiClient';
 import { NavBarLogged } from '../../../Common/Navs/NavBarLogged/NavBarLogged';
 
 export default function UpdateConsumption() {
@@ -12,48 +13,31 @@ export default function UpdateConsumption() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  };
-
   const actualizarConsumo = async (formData) => {
-    const csrfToken = getCookie('XSRF-TOKEN');
     try {
       const datosActualizados = {
         startDate: formData.startDate || null,
         endDate: formData.endDate || null,
         consumption: formData.consumption || null
       };
-
-      const response = await axios.patch(
-        `http://localhost:8080/users/consumptions/${formData.id}`,
-        datosActualizados,
-        { withCredentials: true,
-          headers: { 
-            'Content-Type': 'application/json',
-            'X-XSRF-TOKEN': csrfToken
-          }
-         }
+      const response = await ApiClient.patch(`/users/consumptions/${formData.id}`,
+        datosActualizados
       );
-      
-      setConsumptions(prev => 
+      setConsumptions(prev =>
         prev.map(c => c.id === formData.id ? response.data : c)
       );
       setConsumoSeleccionado(null);
+      toast.success('¡Consumo actualizado correctamente!')
     } catch (err) {
       console.error("Error al actualizar consumo:", err);
-      alert("Hubo un problema actualizando el consumo.");
+      toast.error('Hubo un problema actualizando el consumo')
     }
   };
 
   useEffect(() => {
     const getConsumptions = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/users/consumptions", {
-          withCredentials: true
-        });
+        const response = await ApiClient.get("/users/consumptions");
         setConsumptions(response.data);
         console.log(response.data)
       } catch (error) {
@@ -75,13 +59,13 @@ export default function UpdateConsumption() {
       <div className="profile-app-container">
         <NavBarLogged />
         <div className="profile-content-container">
-          <motion.div 
+          <motion.div
             className="tabla-consumos-container"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <motion.table 
+            <motion.table
               className="tabla-consumos"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -99,9 +83,8 @@ export default function UpdateConsumption() {
                   <motion.tr
                     key={consumption.id}
                     whileHover={{ scale: 1.01, backgroundColor: "#f0f4ff" }}
-                    className={`fila-consumo ${
-                      consumoSeleccionado?.id === consumption.id ? 'fila-seleccionada' : ''
-                    }`}
+                    className={`fila-consumo ${consumoSeleccionado?.id === consumption.id ? 'fila-seleccionada' : ''
+                      }`}
                     onClick={() => setConsumoSeleccionado(consumption)}
                   >
                     <td>{new Date(consumption.startDate).toLocaleDateString()}</td>
@@ -115,10 +98,10 @@ export default function UpdateConsumption() {
             {consumoSeleccionado && (
               <div className="modal-overlay" onClick={() => setConsumoSeleccionado(null)}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                  <ConsumoCard
+                  <UpdateConsumptionCard
                     consumption={consumoSeleccionado}
-                    onActualizar={actualizarConsumo}
-                    onCancelar={() => setConsumoSeleccionado(null)}
+                    onUpdate={actualizarConsumo}
+                    onCancel={() => setConsumoSeleccionado(null)}
                   />
                 </div>
               </div>

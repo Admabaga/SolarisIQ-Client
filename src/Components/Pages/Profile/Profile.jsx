@@ -6,7 +6,7 @@ import ProfileForm from '../../Common/Forms/ProfileForm/ProfileForm.jsx'
 import PasswordForm from '../../Common/Forms/PasswordForm/PasswordForm.jsx';
 import StatusCard from '../../Common/Cards/StatusCard/StatusCard.jsx';
 import ProfileNotification from '../../Common/Cards/ProfileNotification/ProfileNotification.jsx';
-import axios from 'axios';
+import ApiClient from '../../../Utils/ApiClient/ApiClient.jsx';
 import './Profile.css';
 
 const Profile = () => {
@@ -20,7 +20,7 @@ const Profile = () => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/users', {
+        const response = await ApiClient.get('/users', {
           withCredentials: true
         });
         setFormData(response.data);

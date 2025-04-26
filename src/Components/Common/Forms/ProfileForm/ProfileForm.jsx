@@ -1,5 +1,5 @@
 import { toast } from 'react-hot-toast';
-import axios from 'axios';
+import ApiClient from '../../../../Utils/ApiClient/ApiClient';
 import './ProfileForm.css';
 
 const ProfileForm = ({formData, setFormData}) => {
@@ -7,13 +7,11 @@ const ProfileForm = ({formData, setFormData}) => {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch('http://localhost:8080/users', formData, {
-        withCredentials: true
-      });
-      toast.success('Perfil actualizado correctamente!');
+      await ApiClient.patch('/users', formData)
+      toast.success('Perfil actualizado correctamente!')
     } catch (error) {
       console.error('Error al actualizar:', error);
-      toast.error(error.response?.data?.message || 'Error al actualizar');
+      toast.error(error.response?.data?.message || 'Error al actualizar')
     }
   };
 

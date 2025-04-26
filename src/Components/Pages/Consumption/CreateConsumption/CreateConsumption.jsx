@@ -1,11 +1,11 @@
 import { NavBarLogged } from "../../../Common/Navs/NavBarLogged/NavBarLogged"
 import Footer from '../../../Common/Footer/Footer.jsx'
-import { useState } from "react";
-import { DateRange } from "react-date-range";
-import { toast } from 'react-hot-toast';
-import axios from "axios";
-import "react-date-range/dist/styles.css";
-import "react-date-range/dist/theme/default.css";
+import { useState } from "react"
+import { DateRange } from "react-date-range"
+import { toast } from 'react-hot-toast'
+import ApiClient from "../../../../Utils/ApiClient/ApiClient.jsx"
+import "react-date-range/dist/styles.css"
+import "react-date-range/dist/theme/default.css"
 import './CreateConsumption.css'
 
 export default function CreateÇonsumption() {
@@ -17,12 +17,12 @@ export default function CreateÇonsumption() {
         }
     ]);
 
-    const [consumption, setConsumption] = useState("0.0");
-    const [isLoading, setIsLoading] = useState(false);
+    const [consumption, setConsumption] = useState("0.0")
+    const [isLoading, setIsLoading] = useState(false)
     const getCookie = (name) => {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
+        const value = `; ${document.cookie}`
+        const parts = value.split(`; ${name}=`)
+        if (parts.length === 2) return parts.pop().split(';').shift()
     };
 
     const handleSubmit = async (e) => {
@@ -30,25 +30,17 @@ export default function CreateÇonsumption() {
         const csrfToken = getCookie('XSRF-TOKEN')
         setIsLoading(true)
         try {
-            const response = await axios.post(
-                'http://localhost:8080/users/consumptions',
+            const response = await ApiClient.post(
+                '/users/consumptions',
                 {
                     startDate: dateRange[0].startDate,
                     endDate: dateRange[0].endDate,
                     consumption: Number(consumption)
-                },
-                {
-                    withCredentials: true,
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-XSRF-TOKEN': csrfToken
-                    }
-                }
-            )
-            toast.success('¡Consumo guardado correctamente!');
+                })
+            toast.success('¡Consumo guardado correctamente!')
         } catch (error) {
             console.log(error.message)
-            toast.error(`¡Error al guardar el consumo ${error.message}!`);
+            toast.error(`¡Error al guardar el consumo ${error.message}!`)
         }finally{
             setIsLoading(false)
         }
@@ -74,7 +66,7 @@ export default function CreateÇonsumption() {
                             <div className="profile-form-group">
                                 <label className="profile-form-label">Consumo total (kWh):</label>
                                 <input
-                                    type="number"
+                                    type="text"
                                     value={consumption}
                                     onChange={(e) => setConsumption(e.target.value)}
                                     className="form-input"

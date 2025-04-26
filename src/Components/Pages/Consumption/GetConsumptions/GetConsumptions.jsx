@@ -1,5 +1,5 @@
 import { NavBarLogged } from "../../../Common/Navs/NavBarLogged/NavBarLogged";
-import axios from "axios";
+import ApiClient from "../../../../Utils/ApiClient/ApiClient";
 import Footer from "../../../Common/Footer/Footer";
 import ConsumptionCard from "../../../Common/Cards/ConsumptionCard/ConsumptionCard";
 import { useState, useEffect } from "react";
@@ -14,9 +14,7 @@ export default function GetConsumptions() {
     useEffect(() => {
         const getConsumptions = async () => {
             try {
-                const response = await axios.get("http://localhost:8080/users/consumptions", {
-                    withCredentials: true
-                });
+                const response = await ApiClient.get("/users/consumptions")
                 setConsumptions(response.data);
             } catch (error) {
                 console.error("Error fetching consumptions:", error);

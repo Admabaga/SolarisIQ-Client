@@ -1,0 +1,77 @@
+.updateConsumptionCard-container {
+    background: #272626;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  .updateConsumptionCard-title {
+    margin-bottom: 1.5rem;
+    color: #afb2b6;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  .updateConsumptionCard-formGroup {
+    margin-bottom: 1.5rem;
+  }
+  
+  .updateConsumptionCard-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #afb2b6;
+    font-weight: 500;
+  }
+  
+  .updateConsumptionCard-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .updateConsumptionCard-input:focus {
+    outline: none;
+    border-color: #4dabf7;
+    box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.2);
+  }
+  
+  .updateConsumptionCard-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .updateConsumptionCard-btnUpdate {
+    background-color: #3a7d44;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .updateConsumptionCard-btnUpdate:hover {
+    background-color: #2c6e49;
+  }
+  
+  .updateConsumptionCard-btnCancel {
+    background-color: #f1f3f5;
+    color: #343a41;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .updateConsumptionCard-btnCancel:hover {
+    background-color: #adaeaf;
+  }
+  

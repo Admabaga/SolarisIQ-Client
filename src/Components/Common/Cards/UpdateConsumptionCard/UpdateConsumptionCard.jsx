@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './ConsumoCard.css';
+import './UpdateConsumptionCard.css';
 
-export const ConsumoCard = ({ consumption, onActualizar, onCancelar }) => {
+export const UpdateConsumptionCard = ({ consumption, onUpdate, onCancel }) => {
   const [form, setForm] = useState({
     id: '',
     startDate: '',
@@ -11,10 +11,8 @@ export const ConsumoCard = ({ consumption, onActualizar, onCancelar }) => {
 
   useEffect(() => {
     if (consumption) {
-      // Convertir las fechas al formato que espera el input type="date" (YYYY-MM-DD)
       const startDate = consumption.startDate ? consumption.startDate.split('T')[0] : '';
       const endDate = consumption.endDate ? consumption.endDate.split('T')[0] : '';
-      
       setForm({
         id: consumption.id,
         startDate,
@@ -26,70 +24,66 @@ export const ConsumoCard = ({ consumption, onActualizar, onCancelar }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm(prev => ({
-      ...prev,
+    setForm(prevForm => ({
+      ...prevForm,
       [name]: value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Preparar los datos para enviar
-    const datosParaEnviar = {
+    const updatedData = {
       id: form.id,
       startDate: form.startDate ? `${form.startDate}T00:00:00.000Z` : null,
       endDate: form.endDate ? `${form.endDate}T00:00:00.000Z` : null,
       consumption: form.consumption ? parseFloat(form.consumption) : null
     };
-
-    onActualizar(datosParaEnviar);
+    onUpdate(updatedData);
   };
 
   return (
-    <form className="consumo-card" onSubmit={handleSubmit}>
-      <h3>Editar Consumo</h3>
+    <form className="updateConsumptionCard-container" onSubmit={handleSubmit}>
+      <h3 className="updateConsumptionCard-title">Editar Consumo</h3>
 
-      <div className="form-group">
-        <label>Fecha Inicio:</label>
+      <div className="updateConsumptionCard-formGroup">
+        <label className="updateConsumptionCard-label">Fecha inicio:</label>
         <input
           type="date"
           name="startDate"
           value={form.startDate}
           onChange={handleChange}
-          className="form-input"
+          className="updateConsumptionCard-input"
         />
       </div>
 
-      <div className="form-group">
-        <label>Fecha Fin:</label>
+      <div className="updateConsumptionCard-formGroup">
+        <label className="updateConsumptionCard-label">Fecha finalizacion:</label>
         <input
           type="date"
           name="endDate"
           value={form.endDate}
           onChange={handleChange}
-          className="form-input"
+          className="updateConsumptionCard-input"
         />
       </div>
 
-      <div className="form-group">
-        <label>Consumo (kWh):</label>
+      <div className="updateConsumptionCard-formGroup">
+        <label className="updateConsumptionCard-label">Consumo (kWh):</label>
         <input
           type="number"
           step="0.01"
           name="consumption"
           value={form.consumption}
           onChange={handleChange}
-          className="form-input"
-          placeholder="Ingrese el consumo"
+          className="updateConsumptionCard-input"
+          placeholder="Enter consumption"
         />
       </div>
-
-      <div className="card-actions">
-        <button type="button" className="btn-cancelar" onClick={onCancelar}>
+      <div className="updateConsumptionCard-actions">
+        <button type="button" className="updateConsumptionCard-btnCancel" onClick={onCancel}>
           Cancelar
         </button>
-        <button type="submit" className="btn-actualizar">
+        <button type="submit" className="updateConsumptionCard-btnUpdate">
           Actualizar
         </button>
       </div>

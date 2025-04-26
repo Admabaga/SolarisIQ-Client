@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from 'axios';
+import ApiClient from "../../../../Utils/ApiClient/ApiClient";
 import './RegisterForm.css';
 import { EnvelopeFill, PersonFill, TelephoneFill, LockFill } from 'react-bootstrap-icons';
 
@@ -17,7 +17,7 @@ export default function RegisterForm({ onRegisterSuccess }) {
         evento.preventDefault();
         setSearch(true);
         try {
-            const response = await axios.post('http://localhost:8080/users', {
+            const response = await ApiClient.post('/users', {
                 name,
                 phone,
                 email,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { Eye, EyeSlash } from 'react-bootstrap-icons';
-import axios from 'axios';
+import ApiClient from '../../../../Utils/ApiClient/ApiClient';
 import './PaswordForm.css';
 
 const PasswordForm = () => {
@@ -13,31 +13,17 @@ const PasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const csrfToken = getCookie('XSRF-TOKEN');
-
     if (passwords.newPassword !== passwords.confirm) {
       toast.error('Las contraseñas no coinciden');
       return;
     }
-
     setIsLoading(true);
     try {
-      await axios.patch('http://localhost:8080/users/updatePassword', passwords, {
-        withCredentials: true,
-        headers: { 
-          'Content-Type': 'application/json',
-          'X-XSRF-TOKEN': csrfToken
-        },
-      });
-
+      await ApiClient.patch('/users/updatePassword', passwords);
       toast.success('¡Contraseña actualizada correctamente!');
       setPasswords({ oldPassword: '', newPassword: '', confirm: '' });
     } catch (error) {
@@ -47,7 +33,6 @@ const PasswordForm = () => {
       setIsLoading(false);
     }
   };
-
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };

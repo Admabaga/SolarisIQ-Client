@@ -1,5 +1,5 @@
 import { useState } from "react"
-import axios from 'axios'
+import ApiClient from '../../../../Utils/ApiClient/ApiClient';
 import { EnvelopeFill, LockFill, Eye, EyeSlash } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -17,12 +17,10 @@ export default function LoginForm() {
         evento.preventDefault()
         setSearch(true)
         try {
-            const response = await axios.post('http://localhost:8080/users/logins',
+            const response = await ApiClient.post('/users/logins',
                 {
                     email,
                     password,
-                },{
-                    withCredentials: true
                 })
             setRespuestaServerError(false)
             toast.success('¡Sesión iniciada!', {
@@ -33,7 +31,6 @@ export default function LoginForm() {
             const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado"
             setRespuestaServer(`Error al enviar datos: ${mensajeError}`);
             setRespuestaServerError(true)
-
         } finally {
             setSearch(false)
         }

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ValidationRegisterCode.css';
-import axios from 'axios';
+import ApiClient from '../../../Utils/ApiClient/ApiClient';
 import toast from 'react-hot-toast';
 
 const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
@@ -57,12 +57,9 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
 
         setIsLoading(true);
         try {
-            const response = await axios.post(
-                'http://localhost:8080/users/validateCodes',
+            const response = await ApiClient.post(
+                '/users/validateCodes',
                 fullCode,
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                }
             );
             toast.success('¡Usuario registrado con exito!', {
                 duration: 3000,
@@ -79,7 +76,7 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
     const handleResendSMS = async () => {
         if (smsTimer === 0) {
             try {
-                const response = await axios.post('http://localhost:8080/sendSms', userData);
+                const response = await ApiClient.post('/sendSms', userData);
                 setSmsTimer(30);
                 toast.success('SMS enviado exitosamente!');
             } catch (error) {
@@ -91,7 +88,7 @@ const ValidationRegisterCode = ({ isOpen, onClose, children, userData }) => {
     const handleResendEmail = async () => {
         if (emailTimer === 0) {
             try {
-                const response = await axios.post('http://localhost:8080/sendMails', userData);
+                const response = await ApiClient.post('/sendMails', userData);
                 setEmailTimer(30);
                 toast.success('Correo enviado exitosamente!');
             } catch (error) {
