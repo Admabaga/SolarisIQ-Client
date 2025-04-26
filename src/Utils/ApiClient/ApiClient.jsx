@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080';
+const baseUrl = 'http://localhost:8080';
 
 const getCookie = (name) => {
   const value = `; ${document.cookie}`;
@@ -10,7 +10,7 @@ const getCookie = (name) => {
 };
 
 const ApiClient = axios.create({
-  baseURL: BASE_URL,
+  baseURL: baseUrl,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json'
