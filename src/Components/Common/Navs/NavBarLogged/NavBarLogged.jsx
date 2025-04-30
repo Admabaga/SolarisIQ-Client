@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../../Images/Logo.png';
 import { ValidationLogOut } from '../../ValidationLogOut/ValidationLogOut.jsx';
-import Cookies from 'js-cookie';
+import getUserRoleFromToken from '../../../../Utils/GetRole/getUserRoleFromToken.jsx'
 import axios from 'axios';
 import '../NavBarNotLogged/Navs.css';
 import './VerticalNav.css';
@@ -12,22 +12,17 @@ export function NavBarLogged() {
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
-    const getCookie = (name) => {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    };
+    const [userRole, setUserRole] = useState(null);
+    useEffect(() => {
+        const role = localStorage.getItem("role");
+        setUserRole(role);
+    }, []);
 
     const toggleSubmenu = (menu) => {
         setOpenSubmenu(openSubmenu === menu ? null : menu);
     };
 
-    function eliminarJWTCookie(nombreCookie) {
-        document.cookie = nombreCookie + "=; path=/; HttpOnly; Secure;";
-    }
-
     const handleLogout = async () => {
-        const csrfToken = getCookie('XSRF-TOKEN');
         // try {
         //     const response = await axios.post('http://localhost:8080/users/logout',{
         //         withCredentials: true,
@@ -191,6 +186,184 @@ export function NavBarLogged() {
                                     Profile
                                 </NavLink>
                             </li>
+                            {userRole === 'ADMIN' && (
+                                <>
+                                <li className="nav-item">
+                                    <div
+                                        className={`nav-link ${openSubmenu === 'paises' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('paises')}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Paises
+                                    </div>
+                                    {openSubmenu === 'paises' && (
+                                        <ul className="submenu ps-3">
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/paises/registroConsumo"
+                                                >
+                                                    Agregar pais
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/paises/misConsumos"
+                                                >
+                                                    Actualizar Pais
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/paises/actualizarConsumos"
+                                                >
+                                                    Ver Paises
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+
+                                <li className="nav-item">
+                                    <div
+                                        className={`nav-link ${openSubmenu === 'renewableEnergyConsumption' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('renewableEnergyConsumption')}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Consumo energia renovable
+                                    </div>
+                                    {openSubmenu === 'renewableEnergyConsumption' && (
+                                        <ul className="submenu ps-3">
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyConsumption/registroConsumo"
+                                                >
+                                                    Agregar consumo
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyConsumption/misConsumos"
+                                                >
+                                                    Actualizar consumo
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyConsumption/actualizarConsumos"
+                                                >
+                                                    Ver consumos
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+
+                                <li className="nav-item">
+                                    <div
+                                        className={`nav-link ${openSubmenu === 'renewableEnergyProduction' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('renewableEnergyProduction')}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Produccion energia renovable
+                                    </div>
+                                    {openSubmenu === 'renewableEnergyProduction' && (
+                                        <ul className="submenu ps-3">
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyProduction/registroConsumo"
+                                                >
+                                                    Agregar produccion
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyProduction/misConsumos"
+                                                >
+                                                    Actualizar produccion
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyProduction/actualizarConsumos"
+                                                >
+                                                    Ver produccion
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+                                <li className="nav-item">
+                                    <div
+                                        className={`nav-link ${openSubmenu === 'energyIndicator' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('energyIndicator')}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Indicador de energia
+                                    </div>
+                                    {openSubmenu === 'energyIndicator' && (
+                                        <ul className="submenu ps-3">
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/energyIndicator/registroConsumo"
+                                                >
+                                                    Agregar indicador
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/energyIndicator/misConsumos"
+                                                >
+                                                    Actualizar indicador
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/energyIndicator/actualizarConsumos"
+                                                >
+                                                    Ver indicadores
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+                                </>
+                            )}
                             <li className="nav-item logout-item">
                                 <button
                                     className="nav-link logout-btn"
@@ -304,7 +477,7 @@ export function NavBarLogged() {
                                     </ul>
                                 )}
                             </li>
-                            <li className="nav-item">
+                            <li>
                                 <NavLink
                                     className={({ isActive }) =>
                                         isActive ? "nav-link active" : "nav-link"
@@ -314,6 +487,184 @@ export function NavBarLogged() {
                                     Perfil
                                 </NavLink>
                             </li>
+                            {userRole === 'ADMIN' && (
+                                <>
+                                <li className="nav-item">
+                                    <div
+                                        className={`nav-link ${openSubmenu === 'paises' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('paises')}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Paises
+                                    </div>
+                                    {openSubmenu === 'paises' && (
+                                        <ul className="submenu ps-3">
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/paises/registroConsumo"
+                                                >
+                                                    Agregar pais
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/paises/misConsumos"
+                                                >
+                                                    Actualizar Pais
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/paises/actualizarConsumos"
+                                                >
+                                                    Ver Paises
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+
+                                <li className="nav-item">
+                                    <div
+                                        className={`nav-link ${openSubmenu === 'renewableEnergyConsumption' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('renewableEnergyConsumption')}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Consumo energia renovable
+                                    </div>
+                                    {openSubmenu === 'renewableEnergyConsumption' && (
+                                        <ul className="submenu ps-3">
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyConsumption/registroConsumo"
+                                                >
+                                                    Agregar consumo
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyConsumption/misConsumos"
+                                                >
+                                                    Actualizar consumo
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyConsumption/actualizarConsumos"
+                                                >
+                                                    Ver consumos
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+
+                                <li className="nav-item">
+                                    <div
+                                        className={`nav-link ${openSubmenu === 'renewableEnergyProduction' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('renewableEnergyProduction')}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Produccion energia renovable
+                                    </div>
+                                    {openSubmenu === 'renewableEnergyProduction' && (
+                                        <ul className="submenu ps-3">
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyProduction/registroConsumo"
+                                                >
+                                                    Agregar produccion
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyProduction/misConsumos"
+                                                >
+                                                    Actualizar produccion
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/renewableEnergyProduction/actualizarConsumos"
+                                                >
+                                                    Ver produccion
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+                                <li className="nav-item">
+                                    <div
+                                        className={`nav-link ${openSubmenu === 'energyIndicator' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('energyIndicator')}
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        Indicador de energia
+                                    </div>
+                                    {openSubmenu === 'energyIndicator' && (
+                                        <ul className="submenu ps-3">
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/energyIndicator/registroConsumo"
+                                                >
+                                                    Agregar indicador
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/energyIndicator/misConsumos"
+                                                >
+                                                    Actualizar indicador
+                                                </NavLink>
+                                            </li>
+                                            <li>
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        isActive ? "nav-link active" : "nav-link"
+                                                    }
+                                                    to="/energyIndicator/actualizarConsumos"
+                                                >
+                                                    Ver indicadores
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    )}
+                                </li>
+                                </>
+                            )}
                             <li className="nav-item logout-item">
                                 <button
                                     className="nav-link logout-btn"

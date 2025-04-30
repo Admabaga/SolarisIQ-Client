@@ -26,6 +26,8 @@ export default function LoginForm() {
             toast.success('¡Sesión iniciada!', {
                 duration: 3000,
               });
+            localStorage.setItem("role", response.data)
+            console.log(response.data)
             navigate("/lobby")
         } catch (error) {
             const mensajeError = error.response?.data?.message || error.message || "Ocurrió un error inesperado"
