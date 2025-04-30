@@ -20,21 +20,11 @@
   top: 0;
   bottom: 0;
   background-color: var(--navbar-bg);
-  padding: 0;
+  padding: var(--navbar-padding);
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1040;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-}
-
-.container-fluid {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  padding: var(--navbar-padding);
-  width: 100%;
 }
 
 .main-contentLogged {
@@ -49,8 +39,6 @@
   transition: all 0.3s;
   padding: 0.5rem 1rem;
   display: block;
-  border-radius: 4px;
-  margin-bottom: 2px;
 }
 
 .nav-link:hover {
@@ -108,42 +96,10 @@
   object-fit: cover;
 }
 
-/* Estilos para el menú con scroll */
-.desktop-menu-container, 
-.mobile-menu {
-  flex-grow: 1;
-  overflow-y: auto;
-  margin-bottom: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-}
-
-/* Estilos para la barra de scroll */
-.desktop-menu-container::-webkit-scrollbar,
-.mobile-menu::-webkit-scrollbar {
-  width: 6px;
-}
-
-.desktop-menu-container::-webkit-scrollbar-track,
-.mobile-menu::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.desktop-menu-container::-webkit-scrollbar-thumb,
-.mobile-menu::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
-}
-
 .logout-item {
   margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid var(--border-color);
-  position: sticky;
-  bottom: 0;
-  background-color: var(--navbar-bg);
-  z-index: 1;
-  padding-bottom: 0.5rem;
 }
 
 .logout-btn {
@@ -154,8 +110,6 @@
   color: rgba(255, 255, 255, 0.75);
   cursor: pointer;
   transition: all 0.3s;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
 }
 
 .logout-btn:hover {
@@ -177,10 +131,6 @@
   transition: max-height 0.5s ease-in;
 }
 
-.mobile-header {
-  padding: 0.5rem 0;
-}
-
 @media (max-width: 987px) {
   .navbar-vertical-container {
     min-height: auto;
@@ -195,7 +145,6 @@
     bottom: auto;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow-y: visible;
   }
 
   .main-contentLogged {
@@ -207,21 +156,16 @@
     background-color: var(--navbar-bg);
     padding: 1rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    width: 100%;
   }
 
   .desktop-header,
   .desktop-menu {
     display: none !important;
   }
-
-  .logout-item {
-    position: static;
-    margin-top: 1rem;
-  }
 }
 
 @media (min-width: 988px) {
+
   .mobile-header,
   .mobile-menu {
     display: none !important;
