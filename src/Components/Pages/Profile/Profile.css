@@ -35,7 +35,7 @@
 
 /* Información del perfil */
 .profile-info-section {
-  background-color: white;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
   padding: 2rem;
   border-radius: 8px;
   margin-bottom: 2rem;
@@ -44,7 +44,7 @@
 
 /* Notificaciones */
 .profile-notifications {
-  background-color: white;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
