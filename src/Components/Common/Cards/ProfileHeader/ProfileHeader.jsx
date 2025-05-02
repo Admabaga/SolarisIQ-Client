@@ -21,11 +21,11 @@ const ProfileHeader = ({ formData, onAvatarUpdate }) => {
     const file = e.target.files[0];
     if (!file) return;
     if (file.size > 100 * 1024 * 1024) {
-      alert('La imagen es demasiado grande (máximo 2MB)');
+      toast.error('La imagen es demasiado grande (máximo 100MB).');
       return;
     }
     if (!file.type.match('image.*')) {
-      alert('Por favor selecciona un archivo de imagen válido');
+      toast.error('Por favor selecciona un archivo de imagen válido.');
       return;
     }
     const currentAvatar = avatar;
