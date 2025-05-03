@@ -190,20 +190,20 @@ export function NavBarLogged() {
                                 <>
                                 <li className="nav-item">
                                     <div
-                                        className={`nav-link ${openSubmenu === 'paises' ? 'active' : ''}`}
-                                        onClick={() => toggleSubmenu('paises')}
+                                        className={`nav-link ${openSubmenu === 'countries' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('countries')}
                                         style={{ cursor: 'pointer' }}
                                     >
                                         Paises
                                     </div>
-                                    {openSubmenu === 'paises' && (
+                                    {openSubmenu === 'countries' && (
                                         <ul className="submenu ps-3">
                                             <li>
                                                 <NavLink
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/paises/registroConsumo"
+                                                    to="/countries/createCountry"
                                                 >
                                                     Agregar pais
                                                 </NavLink>
@@ -213,7 +213,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/paises/misConsumos"
+                                                    to="/countries/updateCountry"
                                                 >
                                                     Actualizar Pais
                                                 </NavLink>
@@ -223,7 +223,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/paises/actualizarConsumos"
+                                                    to="/countries/getCountries"
                                                 >
                                                     Ver Paises
                                                 </NavLink>
@@ -247,7 +247,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyConsumption/registroConsumo"
+                                                    to="/renewableEnergyConsumption/createRenewableEnergyConsumption"
                                                 >
                                                     Agregar consumo
                                                 </NavLink>
@@ -257,7 +257,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyConsumption/misConsumos"
+                                                    to="/renewableEnergyConsumption/updateRenewableEnergyConsumption"
                                                 >
                                                     Actualizar consumo
                                                 </NavLink>
@@ -267,7 +267,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyConsumption/actualizarConsumos"
+                                                    to="/renewableEnergyConsumption/getRenewableEnergyConsumption"
                                                 >
                                                     Ver consumos
                                                 </NavLink>
@@ -291,7 +291,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyProduction/registroConsumo"
+                                                    to="/renewableEnergyProduction/createRenewableEnergyProduction"
                                                 >
                                                     Agregar produccion
                                                 </NavLink>
@@ -301,7 +301,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyProduction/misConsumos"
+                                                    to="/renewableEnergyProduction/updateRenewableEnergyProduction"
                                                 >
                                                     Actualizar produccion
                                                 </NavLink>
@@ -311,7 +311,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyProduction/actualizarConsumos"
+                                                    to="/renewableEnergyProduction/getRenewableEnergyProduction"
                                                 >
                                                     Ver produccion
                                                 </NavLink>
@@ -334,7 +334,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/energyIndicator/registroConsumo"
+                                                    to="/energyIndicator/createEnergyIndicator"
                                                 >
                                                     Agregar indicador
                                                 </NavLink>
@@ -344,7 +344,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/energyIndicator/misConsumos"
+                                                    to="/energyIndicator/updateEnergyIndicator"
                                                 >
                                                     Actualizar indicador
                                                 </NavLink>
@@ -354,7 +354,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/energyIndicator/actualizarConsumos"
+                                                    to="/energyIndicator/getEnergyIndicator"
                                                 >
                                                     Ver indicadores
                                                 </NavLink>
@@ -491,20 +491,20 @@ export function NavBarLogged() {
                                 <>
                                 <li className="nav-item">
                                     <div
-                                        className={`nav-link ${openSubmenu === 'paises' ? 'active' : ''}`}
-                                        onClick={() => toggleSubmenu('paises')}
+                                        className={`nav-link ${openSubmenu === 'countries' ? 'active' : ''}`}
+                                        onClick={() => toggleSubmenu('countries')}
                                         style={{ cursor: 'pointer' }}
                                     >
                                         Paises
                                     </div>
-                                    {openSubmenu === 'paises' && (
+                                    {openSubmenu === 'countries' && (
                                         <ul className="submenu ps-3">
                                             <li>
                                                 <NavLink
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/paises/registroConsumo"
+                                                    to="/countries/createCountry"
                                                 >
                                                     Agregar pais
                                                 </NavLink>
@@ -514,7 +514,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/paises/misConsumos"
+                                                    to="/countries/updateCountry"
                                                 >
                                                     Actualizar Pais
                                                 </NavLink>
@@ -524,7 +524,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/paises/actualizarConsumos"
+                                                    to="/countries/getCountries"
                                                 >
                                                     Ver Paises
                                                 </NavLink>
@@ -548,7 +548,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyConsumption/registroConsumo"
+                                                    to="/renewableEnergyConsumption/createRenewableEnergyConsumption"
                                                 >
                                                     Agregar consumo
                                                 </NavLink>
@@ -558,7 +558,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyConsumption/misConsumos"
+                                                    to="/renewableEnergyConsumption/updateRenewableEnergyConsumption"
                                                 >
                                                     Actualizar consumo
                                                 </NavLink>
@@ -568,7 +568,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyConsumption/actualizarConsumos"
+                                                    to="/renewableEnergyConsumption/getRenewableEnergyConsumption"
                                                 >
                                                     Ver consumos
                                                 </NavLink>
@@ -592,7 +592,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyProduction/registroConsumo"
+                                                    to="/renewableEnergyProduction/createRenewableEnergyProduction"
                                                 >
                                                     Agregar produccion
                                                 </NavLink>
@@ -602,7 +602,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyProduction/misConsumos"
+                                                    to="/renewableEnergyProduction/updateRenewableEnergyProduction"
                                                 >
                                                     Actualizar produccion
                                                 </NavLink>
@@ -612,7 +612,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/renewableEnergyProduction/actualizarConsumos"
+                                                    to="/renewableEnergyProduction/getRenewableEnergyProduction"
                                                 >
                                                     Ver produccion
                                                 </NavLink>
@@ -635,7 +635,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/energyIndicator/registroConsumo"
+                                                    to="/energyIndicator/createEnergyIndicator"
                                                 >
                                                     Agregar indicador
                                                 </NavLink>
@@ -645,7 +645,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/energyIndicator/misConsumos"
+                                                    to="/energyIndicator/updateEnergyIndicator"
                                                 >
                                                     Actualizar indicador
                                                 </NavLink>
@@ -655,7 +655,7 @@ export function NavBarLogged() {
                                                     className={({ isActive }) =>
                                                         isActive ? "nav-link active" : "nav-link"
                                                     }
-                                                    to="/energyIndicator/actualizarConsumos"
+                                                    to="/energyIndicator/getEnergyIndicator"
                                                 >
                                                     Ver indicadores
                                                 </NavLink>
