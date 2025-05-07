@@ -18,6 +18,7 @@ import CreateEnergyIndicator from '../Components/Pages/EnergyIndicator/CreateEne
 import UpdateEnergyIndicator from '../Components/Pages/EnergyIndicator/UpdateEnergyIndicator/UpdateEnergyIndicator.jsx';
 import GetEnergyIndicator from '../Components/Pages/EnergyIndicator/GetEnergyIndicators/GetEnergyIndicator.jsx';
 import CreateCountry from '../Components/Pages/Countries/CreateCountry/CreateCountry.jsx';
+import UpdateCountry from '../Components/Pages/Countries/UpdateCountry/UpdateCountry.jsx';
 export function AppRoutes() {
     return (
         <>
@@ -37,6 +38,9 @@ export function AppRoutes() {
                 <Route path="/profile" element={<Profile />}></Route>
                 <Route path="/register" element={<Register />}></Route>
                 <Route path="/aboutUs" element={<AboutUs />}></Route>
+                <Route path="/countries/createCountry" element={<CreateCountry/>}></Route>
+                <Route path="/countries/updateCountry" element={<UpdateCountry/>}></Route>
+                <Route path="/countries/getCountries" element={<GetEnergyIndicator/>}></Route>
                 <Route path="/consumos/registroConsumo" element={<CreateConsumption/>}></Route>
                 <Route path="/consumos/misConsumos" element={<GetConsumptions/>}></Route>
                 <Route path="/consumos/actualizarConsumos" element={<UpdateConsumption/>}></Route>
@@ -52,9 +56,6 @@ export function AppRoutes() {
                 {/* <Route path="/renewableEnergyProduction/createRenewableEnergyProduction" element={<Create/>}></Route>
                 <Route path="/renewableEnergyProduction/updateRenewableEnergyProduction" element={<EolicEnergy/>}></Route>
                 <Route path="/renewableEnergyProduction/getRenewableEnergyProduction" element={<EolicEnergy/>}></Route> */}
-                <Route path="/countries/createCountry" element={<CreateCountry/>}></Route>
-                <Route path="/countries/updateCountry" element={<UpdateEnergyIndicator/>}></Route>
-                <Route path="/countries/getCountries" element={<GetEnergyIndicator/>}></Route>
             </Routes>
         </>
     )

@@ -1,0 +1,11 @@
+.btn.btn-outline-secondary.btnAdmin {
+    color: #4b0082 ;
+    background-color: #4b0082;
+    border-color: #4b0082;
+}
+
+.btn.btn-outline-secondary.btnAdmin:hover {
+    background-color: #4b0082;
+    color: white;
+    border-color: #4b0082;
+}
