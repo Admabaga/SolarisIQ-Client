@@ -1,0 +1,29 @@
+.countries-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .gallery-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+  }
+  
+  .countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .countries-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .gallery-title {
+      font-size: 2rem;
+    }
+  }
