@@ -1,0 +1,29 @@
+.wind-region-container {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background: #f9fafb;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wind-region-container h3 {
+    margin-bottom: 1rem;
+    color: #064117;
+    font-size: 1.25rem;
+  }
+  
+  .wind-region-container select {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  } 
+  
+  @media (max-width: 768px) {
+    .wind-region-container {
+      padding: 0.5rem;
+    }
+    .wind-region-container h3 {
+      font-size: 1rem;
+    }
+  }
