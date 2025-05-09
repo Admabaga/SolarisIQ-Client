@@ -28,14 +28,14 @@ export default function HydroElectricalEnergy() {
                                 onClick={() => setActiveTab('production')}
                                 className={`profile-tab-button ${activeTab === 'production' ? 'profile-tab-button--active' : ''}`}
                             >
-                                Produccion
+                                Consumo
                                 {activeTab === 'production' && <div className="profile-tab-indicator"></div>}
                             </button>
                             <button
                                 onClick={() => setActiveTab('consumption')}
                                 className={`profile-tab-button ${activeTab === 'consumption' ? 'profile-tab-button--active' : ''}`}
                             >
-                                Consumo
+                                Produccion
                                 {activeTab === 'consumption' && <div className="profile-tab-indicator"></div>}
                             </button>
                         </nav>
