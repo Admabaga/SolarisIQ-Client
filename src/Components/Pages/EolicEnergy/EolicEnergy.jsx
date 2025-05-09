@@ -1,14 +1,15 @@
 import './EolicEnergy.css';
 import { NavBarLogged } from '../../Common/Navs/NavBarLogged/NavBarLogged';
 import Footer from '../../Common/Footer/Footer.jsx';
-import WindProductionByRegion from '../../Common/Graphics/WindProductionByRegion/WindProductionByRegion.jsx';
-import TopWindProducers from '../../Common/Graphics/TopTenProduction/TopTenProduction.jsx';
-import WindProductionPercentageByRegion from '../../Common/Graphics/PercentageByRegionProduction/PercenteageByRegionProduction.jsx';
+import ProductionByRegion from '../../Common/Graphics/ProductionByRegion/ProductionByRegion.jsx';
+import TopProducers from '../../Common/Graphics/TopTenProduction/TopTenProduction.jsx';
+import ProductionPercentageByRegion from '../../Common/Graphics/PercentageByRegionProduction/PercenteageByRegionProduction.jsx';
 import { useState } from 'react';
 import "chart.js/auto";
 
 export default function EolicEnergy() {
     const [year, setYear] = useState(2023);
+    const [activeTab, setActiveTab] = useState('production');
     return (
         <>
             <div className="profile-app-container">
@@ -21,18 +22,77 @@ export default function EolicEnergy() {
                             <option key={y} value={y}>{y}</option>
                         ))}
                     </select>
-                    <WindProductionByRegion
-                        year={year}
-                    ></WindProductionByRegion>
-                    <WindProductionPercentageByRegion
-                        year={year}
-                    ></WindProductionPercentageByRegion>
-                    <TopWindProducers
-                        year={year}
-                    ></TopWindProducers>
+                    <div className="profile-tabs-container">
+                        <nav className="profile-tabs-nav">
+                            <button
+                                onClick={() => setActiveTab('production')}
+                                className={`profile-tab-button ${activeTab === 'production' ? 'profile-tab-button--active' : ''}`}
+                            >
+                                Produccion
+                                {activeTab === 'production' && <div className="profile-tab-indicator"></div>}
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('consumption')}
+                                className={`profile-tab-button ${activeTab === 'consumption' ? 'profile-tab-button--active' : ''}`}
+                            >
+                                Consumo
+                                {activeTab === 'consumption' && <div className="profile-tab-indicator"></div>}
+                            </button>
+                        </nav>
+                    </div>
+                    {activeTab === 'production' ? (
+
+                        <div className="profile-info-section">
+                            <ProductionByRegion
+                                year={year}
+                                title={"Consumo Total por Región"}
+                                indicator={'Wind Energy Generation'}
+                                label={`Consumo energia eolica por Región Teravatios/hora(TWh)`}
+                                endPoint={'/renewableEnergyConsumptions/totalConsumptionByIndicatorAndRegions'}
+                            ></ProductionByRegion>
+                            <ProductionPercentageByRegion
+                                year={year}
+                                title={"Participación Porcentual Regional"}
+                                indicator={'Wind Energy Generation'}
+                                label={`% Consumo por Región (${year})`}
+                                endPoint={'/renewableEnergyConsumptions/renewableConsumptionInPercentageByRegions'}
+                            ></ProductionPercentageByRegion>
+                            <TopProducers
+                                year={year}
+                                title={"Top 10 Países Consumidores"}
+                                indicator={'Wind Energy Generation'}
+                                label={`Top 10 Países - Consumo energia eolica ${year}`}
+                                endPoint={'/renewableEnergyConsumptions/topTenConsumptionEnergys'}
+                            ></TopProducers>
+                        </div>
+                    ) : (
+                        <div className="profile-info-section">
+                            <ProductionByRegion
+                                year={year}
+                                title={"Producción Total por Región"}
+                                indicator={'Wind Energy Generation'}
+                                label={`Producción energia eolica por Región Teravatios/hora(TWh)`}
+                                endPoint={'/renewableEnergyProductions/totalProductionByIndicatorAndRegions'}
+                            ></ProductionByRegion>
+                            <ProductionPercentageByRegion
+                                year={year}
+                                title={"Participación Porcentual Regional"}
+                                indicator={'Wind Energy Generation'}
+                                label={`% Producción por Región (${year})`}
+                                endPoint={'/renewableEnergyProductions/renewableProductionInPercentageByRegions'}
+                            ></ProductionPercentageByRegion>
+                            <TopProducers
+                                year={year}
+                                title={"Top 10 Países Productores"}
+                                indicator={'Wind Energy Generation'}
+                                label={`Top 10 Países - Producción energia eolica ${year}`}
+                                endPoint={'/renewableEnergyProductions/topTenProductionEnergys'}
+                            ></TopProducers>
+                        </div>
+                    )}
                 </div>
             </div>
-            <Footer />
+            <Footer></Footer>
         </>
     );
 }

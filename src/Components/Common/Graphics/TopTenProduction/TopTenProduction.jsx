@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import ApiClient from '../../../../Utils/ApiClient/ApiClient';
-import './TopWindProducers.css';
+import './TopProducers.css';
 
-const TopWindProducers = ({year}) => {
+const TopProducers = ({year, title, label, endPoint, indicator}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    ApiClient.get('/renewableEnergyProductions/topTenProductionEnergys', {
-      params: { year, indicator: 'Wind Energy Generation' }
+    ApiClient.get(endPoint, {
+      params: {
+        indicator: indicator,
+        year: year,
+        label: label,
+        endPoint: endPoint,
+        title: title
+      }
     }).then(res => setData(res.data));
-  }, [year]);
+  }, [year, title, endPoint, indicator, label]);
 
   const chartData = {
     labels: data.map(d => d.countryName),
     datasets: [
       {
-        label: `Top 10 Países - Producción Eólica ${year}`,
+        label: label,
         data: data.map(d => d.value),
         backgroundColor: '#4ea8de'
       },
@@ -25,11 +31,11 @@ const TopWindProducers = ({year}) => {
 
   return (
     <div className="top-wind-container">
-      <h3>Top 10 Países Productores</h3>
+      <h3>{title}</h3>
       <label>Año: {year}</label>
       <Bar data={chartData} options={{ responsive: true }} />
     </div>
   );
 };
 
-export default TopWindProducers;
+export default TopProducers;

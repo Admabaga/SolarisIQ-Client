@@ -2,25 +2,28 @@
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import ApiClient from '../../../../Utils/ApiClient/ApiClient.jsx';
-import './WindProductionByRegion.css';
+import './ProductionByRegion.css';
 
-const WindProductionByRegion = ({year}) => {
+const ProductionByRegion = ({ year, title, indicator, label, endPoint }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    ApiClient.get('/renewableEnergyProductions/totalProductionByIndicatorAndRegions', {
+    ApiClient.get(endPoint, {
       params: {
-        indicator: 'Wind Energy Generation',
-        year: year
+        indicator: indicator,
+        year: year,
+        label: label,
+        endPoint: endPoint,
+        title: title
       }
     }).then(res => setData(res.data));
-  }, [year]);
-  
+  }, [year, title, endPoint, indicator, label]);
+
   const chartData = {
     labels: data.map(d => d.continent),
     datasets: [
       {
-        label: `Producción Eólica por Región (${data[0]?.unit || 'MW'})`,
+        label: label,
         data: data.map(d => d.value),
         backgroundColor: '#38bdf8',
         borderRadius: 6,
@@ -30,11 +33,11 @@ const WindProductionByRegion = ({year}) => {
 
   return (
     <div className="wind-region-container">
-      <h3>Producción Total por Región</h3>
+      <h3>{title}</h3>
       <label>Año: {year}</label>
       <Bar data={chartData} options={{ responsive: true }} />
     </div>
   );
 };
 
-export default WindProductionByRegion;
+export default ProductionByRegion;
